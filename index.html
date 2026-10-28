@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alpha Moves Academy — Trading i inwestycje jako rzemiosło</title>
+<meta content="Alpha Moves Academy — trading, inwestycje, FOREX, SPOT, codzienne sesje UK i NY, mental, konsultacje 1 na 1 oraz praktyczna praca z zespołem." name="description"/>
+<meta content="#0A0A08" name="theme-color"/>
+<link href="assets/fonts/fonts.css" rel="stylesheet"/>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/ScrollTrigger.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html{ scroll-behavior: smooth; }
+
+  :root{
+    --gold:#E3963C;
+    --gold-2:#F6CD8E;
+    --gold-deep:#A9691F;
+    --gold-ink:#1B1305;
+    --font-serif:'Instrument Serif', serif;
+    --font-display:'Geist', sans-serif;
+    --font-body:'Geist', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+    --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  /* ---- theme tokens ---- */
+  .theme-dark{
+    --bg:#0A0A08; --surface:#16150E; --surface-2:#1C1A11;
+    --ink:#F3EEDF; --ink-soft:#B6AE9B; --ink-mute:#736C5C;
+    --line: rgba(243,238,223,0.10); --line-strong: rgba(243,238,223,0.20);
+    background: var(--bg); color: var(--ink);
+  }
+  .theme-light{
+    --bg:#FAF8F3; --surface:#FFFFFF; --surface-2:#F1ECDE;
+    --ink:#18160F; --ink-soft:#5B5648; --ink-mute:#948C79;
+    --line: rgba(24,22,15,0.11); --line-strong: rgba(24,22,15,0.20);
+    background: var(--bg); color: var(--ink);
+  }
+
+  body{
+    font-family: var(--font-body);
+    background:#0A0A08;
+    color:#F3EEDF;
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color:inherit; text-decoration:none; }
+  ul{ list-style:none; }
+  img{ max-width:100%; display:block; }
+  button{ font-family:inherit; border:none; background:none; cursor:pointer; color:inherit; }
+  ::selection{ background: var(--gold); color: var(--gold-ink); }
+
+  .container{ width:100%; max-width: 1180px; margin:0 auto; padding: 0 32px; }
+  section{ position:relative; }
+  .reveal{ opacity:0; transform: translateY(34px); }
+
+  /* ============ NAV ============ */
+  .nav{
+    position: fixed; top:38px; left:0; right:0; z-index: 500;
+    padding: 26px 0;
+    transition: padding .5s var(--ease), background .5s ease, border-color .5s ease, top .4s var(--ease);
+    border-bottom: 1px solid transparent;
+  }
+  .nav.scrolled{
+    top:0;
+    padding: 14px 0;
+    background: rgba(10,10,8,0.82);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid rgba(243,238,223,0.12);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; }
+  .logo{
+    font-family: var(--font-serif); font-style: normal; font-weight:400; font-size: 25px;
+    display:flex; align-items:center; gap: 12px; color:#F3EEDF;
+  }
+  .logo span{ color: var(--gold); }
+  .logo-mark{
+    width: 30px; height:30px; border-radius: 9px;
+    background: linear-gradient(150deg, var(--gold-2), var(--gold-deep));
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-display); font-weight:800; font-size: 12px; color: var(--gold-ink);
+    font-style: normal;
+  }
+  .nav-links{ display:flex; gap: 36px; }
+  .nav-links a{
+    font-size: 13.5px; font-weight:600; letter-spacing:0.01em;
+    color: rgba(243,238,223,0.7);
+    position:relative; padding-bottom:3px;
+    transition: color .3s ease;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background: var(--gold);
+    transition: width .4s var(--ease);
+  }
+  .nav-links a:hover{ color:#F3EEDF; }
+  .nav-links a:hover::after{ width:100%; }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    padding: 15px 30px; font-size: 14px; font-weight:700;
+    border-radius: 999px;
+    transition: transform .4s var(--ease), box-shadow .4s ease, filter .3s ease, border-color .3s ease, background .3s ease;
+  }
+  .btn-gold{
+    background: linear-gradient(150deg, var(--gold-2), var(--gold) 55%, var(--gold-deep));
+    color: var(--gold-ink);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.35) inset, 0 14px 30px -14px rgba(227,150,60,0.55);
+  }
+  .btn-gold:hover{ transform: translateY(-2px); filter: brightness(1.06); }
+  .btn-line{ border: 1px solid var(--line-strong); color: var(--ink); background: transparent; }
+  .btn-line:hover{ border-color: var(--gold); background: rgba(227,150,60,0.08); transform: translateY(-2px); }
+
+  /* ============ HERO ============ */
+  .hero{ padding: 220px 0 110px; text-align:center; }
+  .eyebrow{
+    font-family: var(--font-mono); font-size: 12px; font-weight:500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold);
+    display:inline-flex; align-items:center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before, .eyebrow::after{ content:''; width: 28px; height:1px; background: var(--line-strong); }
+
+  .hero-title{
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.12; letter-spacing:-0.02em;
+    max-width: 900px; margin: 0 auto;
+  }
+  .hero-title .word{ display:inline-block; opacity:0; transform: translateY(28px); }
+  .hero-title em{
+    font-family: var(--font-serif); font-style: italic; font-weight:400; color: var(--gold-2);
+  }
+
+  .hero-sub{ margin: 26px auto 0; max-width: 550px; font-size: 17px; color: var(--ink-soft); }
+  .hero-ctas{ margin-top: 38px; display:flex; gap: 16px; justify-content:center; flex-wrap:wrap; }
+  .hero-tags{ margin-top: 46px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .hero-tags span{
+    font-size: 12.5px; font-weight:600;
+    padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+
+  .hero-team{ margin-top: 70px; display:grid; grid-template-columns: repeat(3, 216px); gap: 20px; justify-content:center; }
+  .portrait-card{
+    position: relative; aspect-ratio: 4/5; border-radius: 22px;
+    background: linear-gradient(155deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    transition: transform .5s var(--ease), border-color .4s ease;
+  }
+  .portrait-card:hover{ transform: translateY(-8px); border-color: rgba(227,150,60,0.4); }
+  .portrait-card img{ width:100%; height:100%; object-fit:cover; }
+  .portrait-initials{ font-family: var(--font-serif); font-style:italic; font-size: 46px; color: var(--gold); }
+  .portrait-caption{
+    position:absolute; left:0; right:0; bottom:0; padding: 16px 18px 14px;
+    background: linear-gradient(0deg, rgba(10,10,8,0.94), rgba(10,10,8,0));
+    text-align:left;
+  }
+  .portrait-caption .name{ font-family: var(--font-display); font-weight:600; font-size: 15.5px; }
+  .portrait-caption .role{ font-family: var(--font-mono); font-size: 10px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color: var(--gold); margin-top:2px; }
+
+  /* ============ TICKER ============ */
+  .ticker-wrap{ border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; overflow: hidden; }
+  .ticker{ display:flex; gap: 44px; width:max-content; animation: tick 34s linear infinite; }
+  .ticker span{ font-size: 12.5px; font-weight:600; letter-spacing:0.03em; color: var(--ink-mute); display:flex; align-items:center; gap: 14px; }
+  .ticker span::after{ content:'◆'; color: rgba(227,150,60,0.5); font-size:7px; }
+  @keyframes tick{ to{ transform: translateX(-50%); } }
+
+  /* ============ SECTION HEADERS ============ */
+  .section{ padding: 130px 0; }
+  .section-header{ max-width: 620px; margin: 0 0 60px; }
+  .section-header.center{ margin-left:auto; margin-right:auto; text-align:center; }
+  .section-eyebrow{ font-family: var(--font-mono); font-size: 12px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color: var(--gold); display:block; margin-bottom: 16px; }
+  .section-title{ font-family: var(--font-display); font-weight:600; font-size: clamp(26px, 3.4vw, 40px); line-height:1.22; letter-spacing:-0.015em; }
+  .section-title em{ font-family: var(--font-serif); font-style:italic; font-weight:400; color: var(--gold); }
+  .section-desc{ margin-top: 14px; color: var(--ink-soft); font-size: 16px; }
+
+  /* ============ STAT ROW ============ */
+  .stat-row{ display:flex; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stat-item{ flex:1; padding: 42px 20px; text-align:center; border-left: 1px solid var(--line); }
+  .stat-item:first-child{ border-left:none; }
+  .stat-num{ font-family: var(--font-display); font-weight:700; letter-spacing:-0.02em; font-size: clamp(32px, 3.4vw, 44px); color: var(--gold-deep); }
+  .stat-label{ margin-top: 6px; font-size: 13px; color: var(--ink-soft); }
+
+  /* ============ DLACZEGO MY ============ */
+  .why-grid{ display:grid; grid-template-columns: 0.85fr 1.15fr; gap: 80px; align-items:start; }
+  .why-panel{
+    position: sticky; top: 110px; border-radius: 24px;
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 50px 40px;
+  }
+  .why-panel .mark{ font-family: var(--font-serif); font-size: 64px; color: rgba(227,150,60,0.35); line-height:1; }
+  .why-panel blockquote{ font-family: var(--font-serif); font-style: italic; font-size: 25px; line-height: 1.4; margin-top: 6px; color: var(--gold-deep); }
+  .why-panel .attrib{ margin-top: 24px; font-family: var(--font-mono); font-size: 11px; letter-spacing:0.06em; text-transform:uppercase; color: var(--ink-mute); font-weight:500; }
+
+  .why-list{ display:flex; flex-direction:column; }
+  .why-item{ display:flex; gap: 24px; padding: 28px 0; border-top: 1px solid var(--line); }
+  .why-item:last-child{ border-bottom: 1px solid var(--line); }
+  .why-num{
+    width:44px; height:44px; min-width:44px; border-radius: 12px;
+    background: linear-gradient(150deg, var(--gold-2), var(--gold) 60%, var(--gold-deep));
+    color: var(--gold-ink);
+    font-family: var(--font-display); font-weight:800; font-size: 16px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .why-item h3{ font-family: var(--font-display); font-weight:700; font-size: 20px; margin-bottom: 6px; letter-spacing:0em; }
+  .why-item p{ color: var(--ink-soft); font-size: 15px; }
+
+  /* ============ HUB SECTION ============ */
+  .hub-section{ text-align:center; }
+  .hub-graphic{ display:flex; justify-content:center; margin: 46px 0 8px; }
+  .hub-graphic svg{ width: 320px; height: 260px; }
+  .hub-node circle{ fill: var(--surface-2); stroke: rgba(227,150,60,0.5); stroke-width:1.2; }
+  .hub-line{ stroke: rgba(227,150,60,0.35); stroke-width:1; stroke-dasharray: 3 4; }
+  .hub-center circle{ fill: url(index.html); }
+
+  /* ============ CO W ŚRODKU — CARD GRID ============ */
+  .feature-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .feature-card{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 30px 26px;
+    transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .35s ease;
+  }
+  .feature-card:hover{ transform: translateY(-6px); box-shadow: 0 30px 55px -36px rgba(0,0,0,0.4); border-color: rgba(227,150,60,0.4); }
+  .feature-icon{
+    width: 48px; height: 48px; border-radius: 13px;
+    background: linear-gradient(155deg, rgba(227,150,60,0.18), rgba(227,150,60,0.03));
+    border: 1px solid var(--line-strong);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 20px; color: var(--gold-deep);
+  }
+  .feature-icon svg{ width: 21px; height:21px; }
+  .feature-card h4{ font-family: var(--font-display); font-weight:700; font-size: 18px; margin-bottom: 8px; letter-spacing:0em; }
+  .feature-card p{ font-size: 13.5px; color: var(--ink-soft); line-height:1.6; }
+  .feature-tag{
+    display:inline-block; margin-top:14px; font-family: var(--font-mono); font-size: 10px; font-weight:500; letter-spacing:0.07em; text-transform:uppercase;
+    color: var(--gold-ink); background: linear-gradient(150deg, var(--gold-2), var(--gold)); padding: 5px 12px; border-radius:999px;
+  }
+
+  /* ============ ZESPÓŁ ============ */
+  .team-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .team-photo{
+    aspect-ratio: 4/5; border-radius: 20px;
+    background: linear-gradient(155deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    transition: transform .5s var(--ease), border-color .4s ease;
+  }
+  .team-card:hover .team-photo{ transform: translateY(-6px); border-color: rgba(227,150,60,0.4); }
+  .team-photo span{ font-family: var(--font-serif); font-style:italic; font-size: 42px; color: var(--gold-deep); }
+  .team-photo img{ width:100%; height:100%; object-fit:cover; }
+  .team-meta{ padding-top: 18px; }
+  .team-meta h3{ font-family: var(--font-display); font-weight:700; font-size: 19px; letter-spacing:0em; }
+  .team-role{ margin-top:4px; font-family: var(--font-mono); font-size: 10px; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; color: var(--gold-deep); }
+  .team-meta p{ margin-top: 10px; font-size: 13.5px; color: var(--ink-soft); }
+
+  /* ============ ANNOUNCE BAR ============ */
+  .announce-bar{
+    background: var(--gold-deep); color: #1B1305;
+    text-align:center; padding: 10px 20px; font-size: 13px; font-weight:700;
+    position: fixed; top:0; left:0; right:0; z-index: 600;
+    transition: transform .4s var(--ease);
+  }
+  .announce-bar.hide{ transform: translateY(-100%); }
+  .announce-bar a{ text-decoration: underline; text-underline-offset:2px; }
+
+  /* ============ DIAGNOSIS ============ */
+  .diag-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .diag-card{ background: var(--surface); border:1px solid var(--line); border-radius: 20px; padding: 32px 30px; }
+  .diag-num{ font-family: var(--font-display); font-weight:800; font-size: 40px; color: transparent; -webkit-text-stroke: 1.5px var(--line-strong); margin-bottom: 10px; }
+  .diag-card h3{ font-family: var(--font-display); font-weight:700; font-size: 19px; margin-bottom:8px; letter-spacing:0em; }
+  .diag-card > p{ font-size: 14px; color: var(--ink-soft); margin-bottom: 18px; }
+  .diag-solution{
+    background: linear-gradient(150deg, rgba(227,150,60,0.14), rgba(227,150,60,0.04));
+    border: 1px solid rgba(227,150,60,0.25);
+    border-radius: 14px; padding: 16px 18px;
+  }
+  .diag-solution .label{ font-family: var(--font-mono); font-size: 10px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color: var(--gold-deep); margin-bottom:6px; }
+  .diag-solution p{ font-size: 13.5px; color: var(--ink); line-height:1.55; }
+
+  /* ============ LAYERS (POZIOMY) ============ */
+  .layers{ display:flex; flex-direction:column; max-width: 780px; margin: 0 auto; }
+  .layer-row{ display:flex; gap: 28px; padding: 32px 0; border-top: 1px solid var(--line); text-align:left; }
+  .layer-row:last-child{ border-bottom: 1px solid var(--line); }
+  .layer-num{
+    width:44px; height:44px; min-width:44px; border-radius: 12px;
+    background: linear-gradient(150deg, var(--gold-2), var(--gold) 60%, var(--gold-deep));
+    color: var(--gold-ink);
+    font-family: var(--font-display); font-weight:700; font-size: 17px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .layer-row h3{ font-family: var(--font-display); font-weight:700; font-size: 20px; margin-bottom:8px; }
+  .layer-row p{ font-size: 14.5px; color: var(--ink-soft); }
+  .layer-row .realizacja{ margin-top:10px; font-size: 13px; color: var(--gold-2); }
+  .layer-row .realizacja b{ color: var(--gold-2); font-weight:700; }
+
+  /* ============ STEPS 3 ============ */
+  .steps-3{ display:grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+  .step-card{ text-align:center; padding: 8px; }
+  .step-badge{
+    width: 54px; height:54px; border-radius:50%; margin: 0 auto 20px;
+    background: linear-gradient(150deg, var(--gold-2), var(--gold-deep));
+    color: var(--gold-ink); font-family: var(--font-display); font-weight:800; font-size:16px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step-card h3{ font-family: var(--font-display); font-weight:700; font-size: 19px; margin-bottom:8px; }
+  .step-card p{ font-size: 14px; color: var(--ink-soft); }
+  .step-arrow{ display:flex; align-items:center; justify-content:center; color: var(--line-strong); font-size: 22px; }
+
+  /* ============ HARMONOGRAM ============ */
+  .week-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 14px; }
+  .week-card{ background: var(--surface); border:1px solid var(--line); border-radius:16px; padding:20px 18px; }
+  .week-card .day{ font-family: var(--font-mono); font-weight:500; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color: var(--gold-deep); margin-bottom:10px; }
+  .week-card ul{ display:flex; flex-direction:column; gap:6px; }
+  .week-card li{ font-size: 12.5px; color: var(--ink-soft); }
+
+  /* ============ QUALIFY ============ */
+  .qualify-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .qualify-card{ border-radius:20px; padding: 32px 30px; border:1px solid var(--line); }
+  .qualify-card.yes{ background: linear-gradient(160deg, rgba(227,150,60,0.1), transparent); border-color: rgba(227,150,60,0.3); }
+  .qualify-card.no{ background: var(--surface); }
+  .qualify-card h3{ font-family: var(--font-display); font-weight:700; font-size:19px; margin-bottom:18px; }
+  .qualify-card ul{ display:flex; flex-direction:column; gap:14px; }
+  .qualify-card li{ font-size:14px; color: var(--ink-soft); display:flex; gap:12px; align-items:flex-start; }
+  .qualify-card li svg{ min-width:18px; width:18px; height:18px; margin-top:2px; }
+  .qualify-card.yes li svg{ color: var(--gold-deep); }
+  .qualify-card.no li svg{ color: var(--ink-mute); }
+
+  /* ============ OFFER CARD ============ */
+  .offer-wrap{ max-width: 620px; margin: 0 auto; }
+  .offer-card{
+    background: var(--surface); border: 1px solid rgba(227,150,60,0.3); border-radius: 26px;
+    padding: 46px 42px;
+    box-shadow: 0 40px 80px -50px rgba(0,0,0,0.5);
+  }
+  .offer-badge{ display:inline-block; font-family: var(--font-mono); font-size:10px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color: var(--gold-ink); background: linear-gradient(150deg, var(--gold-2), var(--gold)); padding:6px 14px; border-radius:999px; margin-bottom:20px; }
+  .offer-card h3{ font-family: var(--font-display); font-weight:800; font-size:26px; margin-bottom: 6px; }
+  .offer-price{ display:flex; align-items:baseline; gap:10px; margin: 18px 0 24px; }
+  .offer-price .amount{ font-family: var(--font-serif); font-style:italic; font-size: 46px; color: var(--gold-deep); }
+  .offer-price .period{ font-size:13px; color: var(--ink-mute); }
+  .offer-list{ display:flex; flex-direction:column; gap:12px; margin-bottom: 28px; }
+  .offer-list li{ font-size:14px; color: var(--ink-soft); display:flex; gap:10px; align-items:flex-start; }
+  .offer-list li svg{ min-width:17px; width:17px; height:17px; color: var(--gold-deep); margin-top:2px; }
+  .offer-note{ margin-top:18px; font-size:12.5px; color: var(--ink-mute); text-align:center; }
+
+  /* ============ STICKY BOTTOM CTA ============ */
+  .sticky-cta{
+    position: fixed; left:0; right:0; bottom:0; z-index: 480;
+    background: rgba(10,10,8,0.92); backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(243,238,223,0.14);
+    padding: 14px 20px;
+    display:none; align-items:center; justify-content:space-between; gap:16px;
+    transform: translateY(120%); transition: transform .5s var(--ease);
+  }
+  .sticky-cta.show{ transform: translateY(0); }
+  @media (max-width: 900px){ .sticky-cta{ display:flex; } }
+  .sticky-cta .info{ color:#F3EEDF; font-size:13px; }
+  .sticky-cta .info strong{ color: var(--gold); font-family: var(--font-display); }
+  .sticky-cta .info span{ display:block; font-size:11px; color: rgba(243,238,223,0.55); margin-top:2px; }
+
+  /* ============ DIAGNOSIS quote sidebar reuse ============ */
+
+  .testi-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .testi-card{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 30px 28px;
+    display:flex; flex-direction:column; gap: 16px;
+  }
+  .testi-stars{ display:flex; gap: 4px; color: var(--gold); }
+  .testi-stars svg{ width:15px; height:15px; }
+  .testi-quote{ font-size: 14.5px; color: var(--ink-soft); line-height:1.65; flex:1; }
+  .testi-person{ display:flex; align-items:center; gap: 12px; padding-top: 4px; border-top: 1px solid var(--line); margin-top: 2px; padding-top:16px; }
+  .testi-avatar{
+    width: 40px; height:40px; border-radius:50%;
+    background: linear-gradient(150deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--line-strong);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-serif); font-style:italic; font-size:15px; color: var(--gold-deep);
+  }
+  .testi-person .name{ font-family: var(--font-display); font-weight:700; font-size: 14px; }
+  .testi-person .role{ font-size: 12px; color: var(--ink-mute); margin-top:1px; }
+
+  /* ============ FAQ ============ */
+  .faq-grid{ display:flex; flex-direction:column; gap: 14px; }
+  .faq-item{
+    background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
+    padding: 26px 28px;
+  }
+  .faq-item h4{ font-family: var(--font-display); font-weight:700; font-size: 17px; margin-bottom:10px; display:flex; gap:12px; align-items:baseline; }
+  .faq-item h4 .q-mark{ font-family: var(--font-serif); font-style:italic; color: var(--gold); font-size:22px; }
+  .faq-item p{ font-size: 14.5px; color: var(--ink-soft); padding-left: 34px; }
+
+  /* ============ CTA FINAL ============ */
+  .cta-final{ padding: 120px 0; }
+  .cta-final-inner{
+    text-align:center; max-width: 760px; margin: 0 auto; padding: 80px 48px;
+    border-radius: 28px;
+    background: radial-gradient(ellipse 80% 100% at 50% 0%, rgba(227,150,60,0.16), transparent 65%), var(--surface);
+    border: 1px solid var(--line);
+  }
+  .cta-final h2{ font-family: var(--font-display); font-weight:600; font-size: clamp(24px, 3.2vw, 38px); line-height:1.3; letter-spacing:-0.015em; }
+  .cta-final h2 em{ font-family: var(--font-serif); font-style: italic; font-weight:400; color: var(--gold); }
+  .cta-final p{ margin-top: 14px; color: var(--ink-soft); font-size: 15px; max-width: 440px; margin-left:auto; margin-right:auto; }
+  .cta-final .hero-ctas{ margin-top: 32px; }
+
+  /* ============ FOOTER ============ */
+  footer{ border-top: 1px solid var(--line); padding: 60px 0 32px; }
+  .footer-top{ display:flex; justify-content:space-between; flex-wrap:wrap; gap: 40px; padding-bottom: 40px; margin-bottom: 26px; border-bottom: 1px solid var(--line); }
+  .footer-brand p{ color: var(--ink-soft); font-size: 13.5px; max-width: 280px; margin-top:14px; }
+  .footer-cols{ display:flex; gap: 66px; flex-wrap:wrap; }
+  .footer-col h5{ font-family: var(--font-mono); font-size: 10.5px; font-weight:500; letter-spacing:0.09em; text-transform:uppercase; color: var(--gold); margin-bottom: 14px; }
+  .footer-col a, .footer-col p{ display:block; font-size: 13.5px; color: var(--ink-soft); margin-bottom: 9px; transition: color .25s ease; }
+  .footer-col a:hover{ color: var(--ink); }
+  .footer-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap: 14px; font-size: 12px; color: var(--ink-mute); }
+  .risk-note{ max-width: 620px; line-height:1.6; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 980px){
+    .nav-links{ display:none; }
+    .why-grid{ grid-template-columns: 1fr; gap: 40px; }
+    .why-panel{ position: static; }
+    .feature-grid{ grid-template-columns: repeat(2,1fr); }
+    .team-grid{ grid-template-columns: repeat(2,1fr); }
+    .testi-grid{ grid-template-columns: 1fr; }
+    .diag-grid{ grid-template-columns: 1fr; }
+    .steps-3{ grid-template-columns: 1fr; }
+    .step-arrow{ transform: rotate(90deg); }
+    .qualify-grid{ grid-template-columns: 1fr; }
+    .hero-team{ grid-template-columns: repeat(3, 1fr); }
+    .stat-row{ flex-wrap: wrap; }
+    .stat-item{ flex: 1 1 50%; border-left:none; border-top:1px solid var(--line); }
+  }
+  @media (max-width: 640px){
+    .container{ padding: 0 20px; }
+    .section{ padding: 90px 0; }
+    .hero{ padding-top: 168px; }
+    .hero-team{ grid-template-columns: 1fr; max-width:216px; margin-left:auto; margin-right:auto; }
+    .feature-grid{ grid-template-columns: 1fr; }
+    .team-grid{ grid-template-columns: 1fr; }
+    .footer-top{ flex-direction:column; }
+    .cta-final-inner{ padding: 52px 22px; }
+    .faq-item p{ padding-left:0; margin-top:4px; }
+    .hub-graphic svg{ width: 260px; height:220px; }
+  }
+
+
+  /* ============ BRAND / PRODUCTION POLISH ============ */
+  .brand-lockup{ display:flex; align-items:center; gap:10px; min-width:0; }
+  .brand-lockup img{ width:38px; height:38px; object-fit:cover; border-radius:10px; box-shadow:0 0 0 1px rgba(246,205,142,.24); }
+  .brand-lockup .brand-name{ font-family:var(--font-serif); font-size:24px; line-height:1; white-space:nowrap; }
+  .brand-lockup .brand-name b{ color:var(--gold); font-weight:400; }
+  .hero-brand-seal{ width:min(240px,52vw); margin:0 auto 34px; border-radius:24px; overflow:hidden; box-shadow:0 28px 80px -46px rgba(246,205,142,.7); border:1px solid rgba(246,205,142,.14); }
+  .hero-brand-seal img{ width:100%; height:auto; }
+  .hero-kicker{ font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:rgba(243,238,223,.52); margin-top:20px; }
+  .trust-strip{ margin:28px auto 0; max-width:720px; display:flex; justify-content:center; flex-wrap:wrap; gap:10px 18px; color:var(--ink-soft); font-size:12.5px; }
+  .trust-strip span{ display:inline-flex; align-items:center; gap:7px; }
+  .trust-strip span::before{ content:'•'; color:var(--gold); font-size:16px; line-height:1; }
+  .feature-card.feature-wide{ grid-column:span 2; }
+  .offer-rates{ margin-top:14px; padding:13px 15px; border:1px solid rgba(227,150,60,.24); background:rgba(227,150,60,.06); border-radius:13px; font-size:12.5px; color:var(--ink-soft); text-align:center; }
+  .legal-links{ display:flex; gap:18px; flex-wrap:wrap; align-items:center; }
+  .legal-links a{ color:var(--ink-mute); text-decoration:underline; text-underline-offset:3px; }
+  .legal-links a:hover{ color:var(--ink); }
+  .footer-logo-image{ width:126px; border-radius:16px; border:1px solid rgba(246,205,142,.12); margin-bottom:14px; }
+  .offer-card .btn + .offer-rates{ margin-top:14px; }
+  .price-inline{ color:var(--gold); font-weight:800; }
+  @media (max-width: 980px){ .feature-card.feature-wide{ grid-column:span 1; } }
+  @media (max-width: 640px){
+    .nav{ top:38px; }
+    .nav-inner{ gap:12px; }
+    .brand-lockup .brand-name{ font-size:20px; }
+    .brand-lockup img{ width:34px; height:34px; }
+    .nav .btn-line{ display:none; }
+    .nav .btn-gold{ padding:11px 16px !important; font-size:12.5px; }
+    .hero-brand-seal{ width:190px; }
+    .trust-strip{ font-size:11.5px; }
+  }
+
+
+
+/* ============ PREMIUM UX / RESPONSIVE V2 ============ */
+:root{
+  --gold:#DDA54A;
+  --gold-2:#F4D59A;
+  --gold-3:#FFF1C5;
+  --gold-deep:#9B6425;
+  --black:#070806;
+  --cream:#F6F1E7;
+  --radius-lg:28px;
+  --radius-md:20px;
+  --shadow-premium:0 28px 80px rgba(0,0,0,.18);
+}
+html{scroll-padding-top:96px;}
+body{background:var(--black); text-rendering:optimizeLegibility;}
+body.menu-open{overflow:hidden;}
+a,button{-webkit-tap-highlight-color:transparent;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold-2);outline-offset:4px;border-radius:8px;}
+.btn{min-height:48px;position:relative;overflow:hidden;isolation:isolate;}
+.btn::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.22) 48%,transparent 66%);transform:translateX(-130%);transition:transform .75s var(--ease);pointer-events:none;}
+.btn:hover::after{transform:translateX(130%);}
+.btn-xl{padding:17px 30px;min-height:54px;}
+.btn-price{font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;padding:4px 8px;border-radius:999px;background:rgba(27,19,5,.12);white-space:nowrap;}
+.theme-dark{background-color:#090A08;}
+.theme-light{background:#F7F3EA;}
+
+/* announcement */
+.announce-bar{height:38px;padding:0 20px;display:flex;align-items:center;background:linear-gradient(90deg,#8E5B20,#D6A24D 50%,#8E5B20);color:#171007;box-shadow:0 1px 0 rgba(255,255,255,.18) inset;}
+.announce-inner{width:100%;max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;font-size:12.5px;letter-spacing:.005em;}
+.announce-inner a{font-weight:800;text-decoration:none;border-bottom:1px solid currentColor;line-height:1.3;white-space:nowrap;}
+.announce-mobile{display:none;}
+
+/* nav */
+.nav{top:38px;padding:18px 0;}
+.nav.scrolled{padding:10px 0;background:rgba(7,8,6,.88);border-bottom-color:rgba(246,205,142,.12);box-shadow:0 14px 36px rgba(0,0,0,.18);}
+.nav-inner{gap:24px;}
+.brand-lockup{flex:0 0 auto;gap:11px;}
+.brand-lockup img{width:42px;height:42px;border-radius:12px;box-shadow:0 0 0 1px rgba(244,213,154,.26),0 10px 28px rgba(0,0,0,.22);}
+.brand-lockup .brand-name{font-size:25px;letter-spacing:-.02em;}
+.nav-links{gap:26px;align-items:center;}
+.nav-links a{font-size:12.5px;letter-spacing:.035em;text-transform:uppercase;font-family:var(--font-mono);font-weight:500;}
+.nav-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.nav-actions .btn{padding:12px 19px;min-height:44px;font-size:12.5px;}
+.nav-actions .btn-line{border-color:rgba(244,213,154,.18);}
+.cta-short{display:none;}
+.mobile-menu-toggle{display:none;width:46px;height:46px;border:1px solid rgba(244,213,154,.18);border-radius:14px;align-items:center;justify-content:center;flex-direction:column;gap:7px;background:rgba(255,255,255,.025);}
+.mobile-menu-toggle span{display:block;width:19px;height:1.5px;background:#F4EEDC;transition:.3s var(--ease);}
+
+/* mobile menu */
+.mobile-menu{position:fixed;inset:0;z-index:900;pointer-events:none;visibility:hidden;}
+.mobile-menu.is-open{pointer-events:auto;visibility:visible;}
+.mobile-menu-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.64);backdrop-filter:blur(8px);opacity:0;transition:opacity .35s ease;}
+.mobile-menu.is-open .mobile-menu-backdrop{opacity:1;}
+.mobile-menu-panel{position:absolute;top:0;right:0;width:min(440px,92vw);height:100%;background:radial-gradient(circle at 80% 10%,rgba(221,165,74,.13),transparent 31%),#0B0C09;border-left:1px solid rgba(244,213,154,.14);padding:26px 26px calc(28px + env(safe-area-inset-bottom));transform:translateX(102%);transition:transform .45s var(--ease);display:flex;flex-direction:column;}
+.mobile-menu.is-open .mobile-menu-panel{transform:translateX(0);}
+.mobile-menu-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:22px;border-bottom:1px solid rgba(244,213,154,.12);}
+.mobile-menu-label{font-family:var(--font-serif);font-size:24px;color:#F5EDDD;}
+.mobile-menu-close{width:42px;height:42px;border-radius:50%;border:1px solid rgba(244,213,154,.16);font-size:27px;line-height:1;color:#F5EDDD;}
+.mobile-menu-links{display:flex;flex-direction:column;padding:24px 0;}
+.mobile-menu-links a{display:flex;align-items:center;justify-content:space-between;min-height:58px;border-bottom:1px solid rgba(244,213,154,.1);font-size:22px;font-weight:600;letter-spacing:-.02em;color:#F4EEDD;}
+.mobile-menu-links a span{font:500 10px var(--font-mono);color:#B98A43;letter-spacing:.1em;}
+.mobile-menu-cta{margin-top:auto;padding:22px;border:1px solid rgba(244,213,154,.14);border-radius:22px;background:linear-gradient(145deg,rgba(221,165,74,.11),rgba(255,255,255,.015));}
+.mobile-menu-cta>div{display:flex;flex-direction:column;margin-bottom:18px;}
+.mobile-menu-cta span{font:500 10px var(--font-mono);letter-spacing:.11em;text-transform:uppercase;color:#AFA795;}
+.mobile-menu-cta strong{font-family:var(--font-serif);font-size:31px;font-weight:400;color:#F4D59A;line-height:1.2;margin-top:5px;}
+.mobile-menu-cta small{color:#918A7B;margin-top:4px;}
+.mobile-menu-cta .btn{width:100%;}
+.mobile-menu-course{display:block;text-align:center;font-size:12px;color:#B8AF9D;margin-top:13px;text-decoration:underline;text-underline-offset:3px;}
+
+/* hero branding */
+.hero{position:relative;overflow:hidden;padding:196px 0 112px;background:
+radial-gradient(circle at 50% 13%,rgba(221,165,74,.14),transparent 28%),
+radial-gradient(circle at 16% 58%,rgba(221,165,74,.055),transparent 24%),
+linear-gradient(180deg,#070806 0%,#0A0B08 72%,#090A08 100%);}
+.hero::before{content:'';position:absolute;inset:0;opacity:.18;pointer-events:none;background-image:linear-gradient(rgba(244,213,154,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(244,213,154,.04) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,black,transparent 78%);}
+.hero::after{content:'';position:absolute;left:50%;bottom:-260px;width:760px;height:520px;transform:translateX(-50%);border-radius:50%;border:1px solid rgba(244,213,154,.12);box-shadow:0 0 100px rgba(221,165,74,.05);pointer-events:none;}
+.hero-container{position:relative;z-index:1;}
+.hero-overline{display:flex;align-items:center;justify-content:center;gap:13px;margin:0 auto 18px;font:500 10px var(--font-mono);letter-spacing:.26em;color:#B79763;}
+.hero-overline span{display:block;width:36px;height:1px;background:linear-gradient(90deg,transparent,#B79763);}
+.hero-overline span:last-child{transform:scaleX(-1);}
+.hero-brand-seal{width:min(210px,42vw);border-radius:26px;margin-bottom:28px;box-shadow:0 34px 90px -48px rgba(244,213,154,.9),0 0 0 1px rgba(244,213,154,.07);transform:translateZ(0);}
+.hero-brand-seal img{filter:saturate(.95) contrast(1.03);}
+.eyebrow{font-size:10.5px;letter-spacing:.18em;margin-bottom:22px;color:#CDA968;}
+.hero-title{font-size:clamp(46px,5.6vw,76px);max-width:1040px;line-height:1.01;letter-spacing:-.045em;text-wrap:balance;}
+.hero-title em{color:#F2D18F;text-shadow:0 0 28px rgba(221,165,74,.15);}
+.hero-sub{font-size:clamp(15.5px,1.4vw,18px);max-width:680px;line-height:1.68;color:#BDB5A5;margin-top:28px;text-wrap:balance;}
+.hero-ctas{margin-top:32px;}
+.hero-confidence{display:flex;align-items:stretch;justify-content:center;gap:22px;margin:28px auto 0;max-width:680px;color:#F0E8D8;}
+.hero-confidence>div{display:flex;flex-direction:column;gap:1px;min-width:135px;}
+.hero-confidence strong{font:400 21px var(--font-serif);color:#F4D59A;}
+.hero-confidence span{font-size:10.5px;color:#8D8678;letter-spacing:.02em;}
+.hero-confidence i{width:1px;background:linear-gradient(transparent,rgba(244,213,154,.18),transparent);}
+.hero-tags{margin-top:33px;}
+.hero-tags span{padding:8px 14px;border-color:rgba(244,213,154,.11);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;font-family:var(--font-mono);font-weight:500;background:rgba(255,255,255,.018);}
+.hero-team{margin-top:54px;grid-template-columns:repeat(3,minmax(180px,226px));gap:16px;}
+.portrait-card{border-radius:20px;border-color:rgba(244,213,154,.1);box-shadow:0 18px 54px rgba(0,0,0,.18);}
+.portrait-card::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.025);pointer-events:none;}
+.portrait-card:hover{transform:translateY(-7px) scale(1.012);border-color:rgba(244,213,154,.28);}
+.portrait-caption{padding-top:40px;}
+.trust-strip{margin-top:24px;color:#827B6D;}
+.trust-strip span::before{color:#C99A4B;}
+
+/* section branding */
+.section{padding:116px 0;}
+.brand-section{position:relative;}
+.brand-section::before{content:'';position:absolute;top:0;left:50%;width:min(1180px,calc(100% - 64px));height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(155,100,37,.18),transparent);}
+.section-header{margin-bottom:52px;}
+.section-eyebrow{font-size:10.5px;letter-spacing:.19em;}
+.section-title{font-size:clamp(31px,3.8vw,48px);line-height:1.1;letter-spacing:-.035em;text-wrap:balance;}
+.section-desc{max-width:650px;line-height:1.7;}
+.section-header.center .section-desc{margin-left:auto;margin-right:auto;}
+.stat-row{border-color:rgba(155,100,37,.14);}
+.stat-item{padding:38px 20px;}
+.stat-num{font-family:var(--font-serif);font-weight:400;color:#A96F2B;font-size:clamp(36px,4vw,53px);}
+.stat-label{font-size:12px;}
+.diag-card,.feature-card,.qualify-card,.faq-item,.week-card,.why-panel{border-color:rgba(24,22,15,.09);box-shadow:0 18px 50px rgba(66,48,19,.045);}
+.feature-card{position:relative;overflow:hidden;padding:30px 28px;}
+.feature-card::before{content:'';position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,rgba(169,105,31,.38),transparent);opacity:0;transition:opacity .35s ease;}
+.feature-card:hover::before{opacity:1;}
+.feature-icon{border-radius:14px;}
+.feature-card h4{font-size:17px;letter-spacing:-.015em;}
+.team-photo{border-radius:18px;box-shadow:0 20px 50px rgba(35,25,10,.09);}
+.team-meta h3{letter-spacing:-.015em;}
+.week-card{min-height:132px;transition:transform .35s var(--ease),border-color .35s ease;}
+.week-card:hover{transform:translateY(-4px);border-color:rgba(169,105,31,.25);}
+
+/* offer / conversion */
+.conversion-section{padding-top:20px!important;}
+.offer-wrap{max-width:680px;}
+.offer-card-premium{position:relative;overflow:hidden;padding:48px 46px;border:1px solid rgba(169,105,31,.27);box-shadow:0 42px 90px -52px rgba(71,43,8,.35);background:radial-gradient(circle at 90% 3%,rgba(221,165,74,.13),transparent 26%),#fff;}
+.offer-card-premium::before{content:'';position:absolute;top:-90px;right:-80px;width:230px;height:230px;border:1px solid rgba(169,105,31,.12);border-radius:50%;}
+.offer-status{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--ink-mute);margin:0 0 14px;}
+.offer-status i{width:7px;height:7px;border-radius:50%;background:#8F6A2B;box-shadow:0 0 0 4px rgba(143,106,43,.1);}
+.offer-price .amount{font-size:58px;letter-spacing:-.035em;}
+.offer-card-premium>.btn{min-height:56px;font-size:14px;}
+.offer-rates{border-color:rgba(169,105,31,.16);background:#FBF6EC;}
+
+/* footer */
+footer{position:relative;overflow:hidden;padding-top:72px;background:radial-gradient(circle at 14% 20%,rgba(221,165,74,.07),transparent 24%),#090A08!important;}
+footer::before{content:'';position:absolute;top:0;left:50%;width:min(1180px,calc(100% - 64px));height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(244,213,154,.28),transparent);}
+.footer-logo-image{width:142px;border-radius:20px;box-shadow:0 18px 48px rgba(0,0,0,.25);}
+.footer-brand-premium p{max-width:360px;line-height:1.7;}
+.footer-bottom{align-items:flex-start;}
+.risk-note{font-size:11px;}
+
+/* sticky mobile CTA */
+.sticky-cta{padding:10px max(14px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));background:rgba(8,9,7,.94);border-top-color:rgba(244,213,154,.14);box-shadow:0 -14px 36px rgba(0,0,0,.18);}
+.sticky-cta .btn{min-height:46px;padding:11px 18px!important;}
+.sticky-cta .info{line-height:1.25;}
+
+@media (max-width:1100px){
+  .container{padding-left:26px;padding-right:26px;}
+  .nav-links{gap:18px;}
+  .nav-actions .btn-line{display:none;}
+  .hero-title{font-size:clamp(44px,6vw,66px);}
+}
+
+@media (max-width:900px){
+  .nav-links{display:none;}
+  .mobile-menu-toggle{display:flex;}
+  .nav-actions .btn-gold{display:inline-flex;}
+  .hero{padding-top:178px;padding-bottom:94px;}
+  .hero-team{grid-template-columns:repeat(3,1fr);max-width:720px;margin-left:auto;margin-right:auto;}
+  .section{padding:96px 0;}
+  .feature-grid{gap:14px;}
+  .team-grid{grid-template-columns:repeat(2,1fr);gap:28px 16px;}
+  body{padding-bottom:74px;}
+}
+
+@media (max-width:700px){
+  .container{padding-left:18px;padding-right:18px;}
+  .announce-bar{padding:0 14px;}
+  .announce-desktop{display:none;}
+  .announce-mobile{display:inline;}
+  .announce-inner{justify-content:space-between;gap:10px;font-size:11.5px;}
+  .nav{padding:12px 0;}
+  .nav.scrolled{padding:9px 0;}
+  .brand-lockup img{width:37px;height:37px;}
+  .brand-lockup .brand-name{font-size:20px;}
+  .nav-actions{gap:8px;}
+  .nav-actions .btn-gold{padding:10px 14px!important;min-height:42px;}
+  .cta-full{display:none;}.cta-short{display:inline;}
+  .mobile-menu-toggle{width:42px;height:42px;border-radius:12px;}
+
+  .hero{padding-top:154px;padding-bottom:76px;}
+  .hero-overline{margin-bottom:14px;font-size:9px;letter-spacing:.18em;}
+  .hero-overline span{width:24px;}
+  .hero-brand-seal{width:156px;margin-bottom:22px;border-radius:20px;}
+  .eyebrow{font-size:9px;line-height:1.5;letter-spacing:.12em;max-width:92%;margin-bottom:16px;}
+  .eyebrow::before,.eyebrow::after{display:none;}
+  .hero-title{font-size:clamp(38px,11.7vw,54px);line-height:1.02;letter-spacing:-.045em;}
+  .hero-sub{font-size:15px;line-height:1.58;margin-top:21px;max-width:540px;}
+  .hero-ctas{display:grid;grid-template-columns:1fr;margin-top:26px;gap:10px;}
+  .hero-ctas .btn{width:100%;min-height:52px;}
+  .hero-ctas .btn-price{margin-left:auto;}
+  .hero-confidence{gap:10px;margin-top:24px;display:grid;grid-template-columns:repeat(3,1fr);}
+  .hero-confidence i{display:none;}
+  .hero-confidence>div{min-width:0;padding:10px 5px;border:1px solid rgba(244,213,154,.09);border-radius:13px;background:rgba(255,255,255,.015);}
+  .hero-confidence strong{font-size:17px;}
+  .hero-confidence span{font-size:9px;line-height:1.3;}
+  .hero-tags{display:none;}
+  .hero-team{margin-top:32px;gap:8px;grid-template-columns:repeat(3,1fr);}
+  .portrait-card{border-radius:14px;aspect-ratio:3/4;}
+  .portrait-caption{padding:30px 8px 9px;}
+  .portrait-caption .name{font-size:11px;line-height:1.15;}
+  .portrait-caption .role{font-size:7px;letter-spacing:.05em;}
+  .trust-strip{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px;text-align:left;}
+  .trust-strip span{font-size:10px;line-height:1.3;padding:8px 9px;border-radius:10px;background:rgba(255,255,255,.018);border:1px solid rgba(244,213,154,.07);}
+
+  .section{padding:78px 0;}
+  .section-header{margin-bottom:36px;}
+  .section-eyebrow{font-size:9px;margin-bottom:12px;}
+  .section-title{font-size:clamp(30px,9vw,40px);line-height:1.08;}
+  .section-desc{font-size:14px;line-height:1.6;margin-top:11px;}
+  .brand-section::before,footer::before{width:calc(100% - 36px);}
+  .stat-row{display:grid;grid-template-columns:1fr 1fr;}
+  .stat-item{padding:24px 10px!important;border-top:1px solid rgba(24,22,15,.09)!important;border-left:1px solid rgba(24,22,15,.09)!important;}
+  .stat-item:nth-child(odd){border-left:0!important;}
+  .stat-num{font-size:38px;}
+  .stat-label{font-size:10.5px;line-height:1.35;}
+  .why-panel{padding:30px 24px!important;border-radius:20px;}
+  .why-panel blockquote{font-size:22px;}
+  .diag-card,.feature-card,.qualify-card,.faq-item{padding:24px 20px;}
+  .feature-grid{grid-template-columns:1fr;}
+  .feature-card.feature-wide{grid-column:auto;}
+  .week-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .week-card{padding:16px 14px;min-height:118px;}
+  .week-card .day{font-size:9px;}
+  .week-card li{font-size:11px;line-height:1.4;}
+  .team-grid{grid-template-columns:1fr 1fr;gap:30px 12px;}
+  .team-photo{border-radius:15px;}
+  .team-meta{padding-top:11px;}
+  .team-meta h3{font-size:15px;}
+  .team-role{font-size:8px;}
+  .team-meta p{font-size:11.5px;line-height:1.45;margin-top:7px;}
+  .offer-card-premium{padding:32px 22px;border-radius:22px;}
+  .offer-price .amount{font-size:49px;}
+  .offer-price{margin:14px 0 20px;}
+  .offer-list{gap:10px;}
+  .offer-list li{font-size:12.5px;line-height:1.5;}
+  .faq-item h4{font-size:15px;line-height:1.4;}
+  .faq-item p{font-size:13px;line-height:1.55;}
+  .cta-final{padding:70px 0;}
+  .cta-final-inner{padding:44px 20px;border-radius:22px;}
+  footer{padding-top:56px;}
+  .footer-cols{gap:34px;}
+  .footer-bottom{flex-direction:column;}
+  .legal-links{gap:10px 14px;}
+  .sticky-cta .info strong{font-size:12px;}.sticky-cta .info span{font-size:9.5px;}
+}
+
+@media (max-width:430px){
+  .brand-lockup .brand-name{display:none;}
+  .nav-actions .btn-gold{padding-inline:13px!important;}
+  .hero-title{font-size:39px;}
+  .hero-confidence{grid-template-columns:1fr;gap:7px;}
+  .hero-confidence>div{display:grid;grid-template-columns:90px 1fr;align-items:center;text-align:left;padding:8px 12px;}
+  .hero-confidence strong{font-size:16px;}
+  .trust-strip{grid-template-columns:1fr;}
+  .team-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto;}
+  .team-meta h3{font-size:18px;}.team-role{font-size:9px;}.team-meta p{font-size:12.5px;}
+  .week-grid{grid-template-columns:1fr;}
+  .week-card{min-height:auto;}
+  .mobile-menu-panel{width:100vw;padding-left:20px;padding-right:20px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
+  .reveal,.hero-title .word{opacity:1!important;transform:none!important;}
+  .ticker{animation:none!important;}
+}
+
+
+/* ==========================================================
+   UI V3 — cleaner hero, stronger hierarchy, founder focus
+   ========================================================== */
+:root{
+  --gold-premium:#D8AA5A;
+  --gold-soft:#F1D79E;
+  --ink-premium:#17140F;
+}
+
+/* HERO — remove visual clutter and make the people the brand asset */
+.hero{
+  padding-top:184px;
+  padding-bottom:126px;
+  background:
+    radial-gradient(ellipse 44% 34% at 50% 9%,rgba(216,170,90,.15),transparent 70%),
+    radial-gradient(ellipse 34% 28% at 50% 76%,rgba(216,170,90,.075),transparent 74%),
+    linear-gradient(180deg,#070806 0%,#0A0B08 66%,#080906 100%);
+}
+.hero::before{
+  opacity:.12;
+  background-size:72px 72px;
+  mask-image:linear-gradient(to bottom,black 0%,rgba(0,0,0,.65) 52%,transparent 92%);
+}
+.hero::after{
+  bottom:-330px;
+  width:900px;
+  height:610px;
+  border-color:rgba(241,215,158,.10);
+  box-shadow:0 0 140px rgba(216,170,90,.045), inset 0 0 90px rgba(216,170,90,.025);
+}
+.hero .eyebrow{
+  opacity:0;
+  transform:translateY(14px);
+  display:inline-flex;
+  padding:8px 13px;
+  margin-bottom:25px;
+  border:1px solid rgba(241,215,158,.13);
+  border-radius:999px;
+  background:rgba(255,255,255,.018);
+  color:#C9A86E;
+  backdrop-filter:blur(8px);
+}
+.hero .eyebrow::before,.hero .eyebrow::after{width:18px;background:rgba(241,215,158,.28);}
+.hero-title{
+  max-width:980px;
+  font-size:clamp(48px,5.45vw,74px);
+  line-height:1.015;
+  letter-spacing:-.052em;
+}
+.hero-title em{
+  position:relative;
+  color:var(--gold-soft);
+  text-shadow:none;
+}
+.hero-sub{max-width:720px;color:#B8B1A3;}
+.hero-ctas{margin-top:34px;}
+.hero-ctas .btn-xl{padding:17px 28px;}
+.hero-confidence{
+  margin-top:25px;
+  padding:11px 16px;
+  max-width:650px;
+  border:1px solid rgba(241,215,158,.09);
+  border-radius:18px;
+  background:rgba(255,255,255,.015);
+}
+.hero-confidence strong{color:#F0D092;}
+.hero-confidence span{color:#8F887A;}
+.hero-tags{margin-top:22px;}
+
+.hero-team-kicker{
+  margin:48px auto 17px;
+  font:500 9.5px var(--font-mono);
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#8F8678;
+}
+.hero-team{
+  position:relative;
+  margin-top:0;
+  grid-template-columns:196px 236px 196px;
+  gap:18px;
+  align-items:center;
+  isolation:isolate;
+}
+.hero-team::before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  left:50%;
+  top:50%;
+  width:720px;
+  height:300px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(ellipse at center,rgba(216,170,90,.09),transparent 68%);
+  filter:blur(10px);
+  pointer-events:none;
+}
+.hero-team .portrait-card{
+  aspect-ratio:4/5;
+  background:#11110E;
+  border-color:rgba(241,215,158,.10);
+  box-shadow:0 24px 56px rgba(0,0,0,.25);
+}
+.hero-team .portrait-card:not(.portrait-card-founder){
+  opacity:.86;
+  transform:scale(.965);
+}
+.hero-team .portrait-card:not(.portrait-card-founder):hover{
+  opacity:1;
+  transform:translateY(-6px) scale(.985);
+}
+.hero-team .portrait-card-founder{
+  z-index:3;
+  transform:translateY(-8px);
+  border-color:rgba(241,215,158,.32);
+  box-shadow:0 34px 80px rgba(0,0,0,.34),0 0 0 1px rgba(241,215,158,.06),0 0 52px rgba(216,170,90,.08);
+}
+.hero-team .portrait-card-founder:hover{transform:translateY(-13px) scale(1.012);}
+.hero-team .portrait-card-founder::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:2;
+  border-radius:inherit;
+  background:linear-gradient(180deg,rgba(241,215,158,.045),transparent 28%,transparent 70%,rgba(216,170,90,.04));
+  pointer-events:none;
+}
+.portrait-caption{z-index:3;}
+.founder-badge{
+  display:inline-flex;
+  margin-bottom:5px;
+  padding:3px 7px;
+  border-radius:999px;
+  background:rgba(226,174,84,.14);
+  border:1px solid rgba(241,215,158,.19);
+  color:#E8C781;
+  font:600 7.5px var(--font-mono);
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.trust-strip{
+  margin-top:28px;
+  padding-top:21px;
+  border-top:1px solid rgba(241,215,158,.08);
+  max-width:900px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* LIGHT SECTIONS — more editorial, less generic card-grid */
+.theme-light{background:linear-gradient(180deg,#F8F5EE 0%,#F5F0E7 100%);}
+.section{padding:124px 0;}
+.section-header{margin-bottom:58px;}
+.section-eyebrow{color:#9C6A2E;}
+.section-title{color:#17140F;}
+.section-title em{color:#9E6A2B;}
+.section-desc{color:#696254;}
+.diag-grid{gap:16px;}
+.diag-card{
+  position:relative;
+  overflow:hidden;
+  padding:34px 30px 30px;
+  border-radius:22px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(10px);
+  box-shadow:0 18px 48px rgba(57,42,18,.045);
+}
+.diag-card::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:2px;
+  background:linear-gradient(180deg,transparent,#C48D3C,transparent);
+  opacity:.55;
+}
+.diag-num{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  -webkit-text-stroke:0;
+  color:#A87534;
+  margin-bottom:17px;
+}
+.diag-card h3{font-size:20px;letter-spacing:-.02em;}
+.diag-card>p{font-size:14px;line-height:1.65;}
+.diag-solution{
+  margin-top:20px;
+  padding:17px 18px;
+  background:linear-gradient(145deg,rgba(197,142,60,.09),rgba(255,255,255,.35));
+  border-color:rgba(156,106,46,.14);
+}
+
+.feature-grid{gap:14px;}
+.feature-card{
+  border-radius:22px;
+  background:rgba(255,255,255,.74);
+  box-shadow:0 18px 48px rgba(57,42,18,.04);
+}
+.feature-card:hover{transform:translateY(-5px);box-shadow:0 28px 56px rgba(57,42,18,.075);}
+.feature-icon{background:linear-gradient(155deg,rgba(196,141,60,.13),rgba(196,141,60,.025));}
+
+/* TEAM — consistent premium editorial feel */
+.team-grid{gap:32px 20px;}
+.team-photo{position:relative;background:#EDE7DC;}
+.team-photo::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(90,60,24,.06);pointer-events:none;}
+.team-card:hover .team-photo{transform:translateY(-4px);}
+.team-meta p{line-height:1.65;}
+
+/* OFFER — stronger conversion focal point */
+.conversion-section{padding-top:34px!important;}
+.offer-card-premium{
+  border-radius:30px;
+  padding:52px 50px;
+  box-shadow:0 46px 100px -58px rgba(73,47,12,.48);
+}
+.offer-card-premium::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+  pointer-events:none;
+}
+.offer-card-premium .amount{color:#9B6729;}
+.offer-card-premium>.btn{box-shadow:0 18px 36px -18px rgba(152,98,31,.55),inset 0 1px 0 rgba(255,255,255,.45);}
+
+/* CTA / Footer */
+.cta-final-inner{position:relative;overflow:hidden;box-shadow:0 28px 90px rgba(0,0,0,.18);}
+.cta-final-inner::before{content:'';position:absolute;left:50%;top:-220px;width:520px;height:420px;transform:translateX(-50%);border:1px solid rgba(241,215,158,.11);border-radius:50%;pointer-events:none;}
+
+@media (max-width:900px){
+  .hero{padding-top:168px;padding-bottom:100px;}
+  .hero-team{grid-template-columns:1fr 1.12fr 1fr;max-width:650px;gap:12px;}
+  .hero-team .portrait-card-founder{transform:translateY(-5px);}
+  .section{padding:104px 0;}
+}
+
+@media (max-width:700px){
+  .hero{padding-top:142px;padding-bottom:82px;}
+  .hero .eyebrow{opacity:1;transform:none;padding:7px 10px;margin-bottom:18px;}
+  .hero-title{font-size:clamp(39px,11.4vw,53px);}
+  .hero-sub{margin-top:19px;}
+  .hero-confidence{padding:0;border:0;background:none;}
+  .hero-team-kicker{margin-top:34px;margin-bottom:13px;}
+  .hero-team{grid-template-columns:1fr 1.12fr 1fr;gap:7px;max-width:430px;}
+  .hero-team::before{width:120%;height:210px;}
+  .hero-team .portrait-card{aspect-ratio:3/4;border-radius:14px;}
+  .hero-team .portrait-card:not(.portrait-card-founder){opacity:.8;transform:scale(.96);}
+  .hero-team .portrait-card-founder{transform:translateY(-4px);}
+  .founder-badge{font-size:6.5px;padding:2px 5px;}
+  .section{padding:82px 0;}
+  .diag-grid{gap:12px;}
+  .diag-card{padding:25px 21px;border-radius:18px;}
+  .offer-card-premium{padding:34px 22px;border-radius:24px;}
+}
+
+@media (max-width:430px){
+  .hero{padding-top:136px;}
+  .hero-title{font-size:38px;}
+  .hero-team{gap:6px;}
+  .portrait-caption .name{font-size:10px;}
+  .portrait-caption .role{font-size:6.5px;}
+  .founder-badge{display:none;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hero .eyebrow{opacity:1!important;transform:none!important;}
+}
+
+
+/* ============ V4: stronger hierarchy, framework contrast, tablet CTAs ============ */
+.btn-course{
+  min-width:220px;
+  flex-direction:column;
+  gap:1px;
+  border:1px solid rgba(241,215,158,.28);
+  background:rgba(255,255,255,.035);
+  color:#F1E9DA;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+.btn-course span{font-weight:700;line-height:1.15;}
+.btn-course small{
+  font:500 9px var(--font-mono);
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:#9D9484;
+}
+.btn-course:hover{
+  transform:translateY(-2px);
+  border-color:rgba(241,215,158,.5);
+  background:rgba(241,215,158,.075);
+  color:#FFF8E9;
+}
+.hero-program-link{
+  flex-basis:100%;
+  width:max-content;
+  margin:2px auto 0;
+  color:#8F887A;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.01em;
+  transition:color .25s ease, transform .25s ease;
+}
+.hero-program-link span{display:inline-block;margin-left:4px;color:#C9A86E;transition:transform .25s ease;}
+.hero-program-link:hover{color:#E9E0D0;}
+.hero-program-link:hover span{transform:translateY(3px);}
+
+/* Dark section needed an explicit override because editorial light-section rules were global. */
+.framework-section{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 70% 48% at 50% 0%,rgba(203,151,67,.13),transparent 68%),
+    linear-gradient(180deg,#090A08 0%,#0E0E0B 54%,#090A08 100%) !important;
+  border-top:1px solid rgba(241,215,158,.08);
+  border-bottom:1px solid rgba(241,215,158,.08);
+}
+.framework-section::before{
+  content:'';
+  position:absolute;
+  top:0;left:50%;
+  width:min(720px,70vw);height:1px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(244,211,145,.75),transparent);
+  box-shadow:0 0 36px rgba(220,165,74,.28);
+}
+.framework-section .section-eyebrow{color:#D7A95F;}
+.framework-section .section-title{color:#F6F0E4 !important;text-wrap:balance;}
+.framework-section .section-title em{color:#F0C979 !important;}
+.framework-section .section-desc{color:#BDB5A6 !important;}
+.framework-section .layers{
+  max-width:860px;
+  margin-top:60px !important;
+  gap:10px;
+}
+.framework-section .layer-row{
+  position:relative;
+  padding:27px 28px;
+  border:1px solid rgba(241,215,158,.10) !important;
+  border-radius:18px;
+  background:linear-gradient(110deg,rgba(255,255,255,.032),rgba(255,255,255,.012));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+  transition:transform .35s var(--ease),border-color .35s ease,background .35s ease;
+}
+.framework-section .layer-row:hover{
+  transform:translateX(5px);
+  border-color:rgba(227,174,84,.28) !important;
+  background:linear-gradient(110deg,rgba(227,174,84,.075),rgba(255,255,255,.015));
+}
+.framework-section .layer-num{
+  width:48px;height:48px;min-width:48px;
+  border-radius:14px;
+  background:linear-gradient(145deg,#F3D89B,#D49A43 58%,#9D6726);
+  box-shadow:0 10px 28px rgba(201,142,52,.16),inset 0 1px 0 rgba(255,255,255,.48);
+}
+.framework-section .layer-row h3{color:#F5EFE4;font-size:21px;letter-spacing:-.01em;}
+.framework-section .layer-row p{color:#AAA294;font-size:14.5px;line-height:1.68;}
+.framework-section .layer-row .realizacja{color:#D7B16D;margin-top:12px;}
+.framework-section .layer-row .realizacja b{color:#F0CE8D;}
+
+/* Remove visual founder label entirely; Marcin remains centered by composition. */
+.founder-badge{display:none!important;}
+
+@media (min-width:701px) and (max-width:1100px){
+  .hero-ctas{
+    display:grid;
+    grid-template-columns:minmax(0,1.25fr) minmax(210px,.75fr);
+    width:min(720px,100%);
+    margin-left:auto;
+    margin-right:auto;
+    gap:12px;
+  }
+  .hero-ctas .btn{width:100%;min-height:58px;}
+  .hero-program-link{grid-column:1 / -1;}
+}
+
+@media (max-width:700px){
+  .btn-course{min-width:0;}
+  .hero-program-link{font-size:11.5px;margin-top:4px;}
+  .framework-section .layers{margin-top:38px !important;gap:9px;}
+  .framework-section .layer-row{gap:15px;padding:20px 17px;border-radius:16px;}
+  .framework-section .layer-row:hover{transform:none;}
+  .framework-section .layer-num{width:42px;height:42px;min-width:42px;border-radius:12px;}
+  .framework-section .layer-row h3{font-size:18px;}
+  .framework-section .layer-row p{font-size:13.5px;line-height:1.58;}
+  .framework-section .layer-row .realizacja{font-size:12px;}
+}
+
+
+
+/* ============ V5: STATIC BRAND QUOTE + FEATURE LABELS ============ */
+.brand-quote{
+  position:static !important;
+  inset:auto !important;
+  transform:none !important;
+  opacity:1 !important;
+  max-width:820px;
+  margin:0 auto 54px;
+  padding:30px 34px 28px;
+  text-align:center;
+  border:1px solid rgba(169,105,31,.22);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(227,150,60,.10), transparent 58%),
+    rgba(255,255,255,.72);
+  box-shadow:0 22px 60px rgba(66,48,19,.055);
+}
+.brand-quote-mark{
+  display:block;
+  height:30px;
+  font-family:var(--font-serif);
+  font-size:56px;
+  line-height:.9;
+  color:var(--gold-deep);
+  opacity:.55;
+}
+.brand-quote blockquote{
+  max-width:690px;
+  margin:0 auto;
+  font-family:var(--font-serif);
+  font-style:italic;
+  font-size:clamp(22px,2.3vw,30px);
+  line-height:1.35;
+  color:#2b2418;
+}
+.brand-quote p{
+  margin-top:14px;
+  font-family:var(--font-mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+}
+.feature-card{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.feature-card p{ flex:1; }
+.feature-tag{
+  margin-top:18px;
+  align-self:flex-start;
+  border:1px solid rgba(169,105,31,.18);
+  box-shadow:0 7px 18px rgba(169,105,31,.08);
+  white-space:nowrap;
+}
+@media (max-width:640px){
+  .brand-quote{margin-bottom:34px;padding:24px 19px 22px;border-radius:18px;}
+  .brand-quote blockquote{font-size:22px;}
+  .brand-quote p{font-size:9px;line-height:1.55;}
+  .feature-tag{white-space:normal;}
+}
+
+</style>
+<style>
+/* ==========================================================
+   UI V6 — contrast pass + balanced weekly schedule
+   ========================================================== */
+
+/* System wsparcia: explicit dark-theme contrast, overriding the
+   global light-section typography introduced by the premium pass. */
+.hub-section.theme-dark{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(760px 420px at 50% 46%, rgba(216,170,90,.12), transparent 68%),
+    linear-gradient(180deg,#0a0907 0%,#0d0b08 100%);
+  border-top:1px solid rgba(241,215,158,.08);
+  border-bottom:1px solid rgba(241,215,158,.08);
+}
+.hub-section.theme-dark::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:linear-gradient(to bottom,transparent 3%,#000 28%,#000 72%,transparent 97%);
+}
+.hub-section .section-eyebrow{
+  color:#E9BA6B !important;
+  font-weight:700;
+  text-shadow:0 0 24px rgba(227,150,60,.15);
+}
+.hub-section .section-title{
+  color:#FAF6ED !important;
+  font-weight:650;
+  letter-spacing:-.04em;
+  text-shadow:0 1px 0 rgba(255,255,255,.03);
+}
+.hub-section .section-title em{
+  color:#F2CD88 !important;
+}
+.hub-section .section-desc{
+  color:#D0C7B8 !important;
+  max-width:660px !important;
+  font-size:16px;
+  line-height:1.72;
+}
+.hub-section .hub-graphic{
+  margin-top:42px;
+  margin-bottom:0;
+  filter:drop-shadow(0 20px 44px rgba(0,0,0,.32));
+}
+.hub-section .hub-line{
+  stroke:rgba(240,197,125,.58);
+  stroke-width:1.15;
+}
+.hub-section .hub-node circle{
+  fill:#17130D;
+  stroke:rgba(240,197,125,.72);
+  stroke-width:1.35;
+}
+.hub-section .hub-center circle{
+  filter:drop-shadow(0 0 18px rgba(227,150,60,.36));
+}
+
+/* Weekly schedule: 4 cards in the first row + 3 wider cards centered
+   underneath. No orphan card on desktop. */
+.week-grid{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:14px;
+  align-items:stretch;
+}
+.week-grid > .week-card{
+  grid-column:span 3;
+  min-width:0;
+  min-height:162px;
+  padding:23px 20px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#fff 0%,#fbf8f1 100%);
+  border:1px solid rgba(24,22,15,.11);
+  box-shadow:0 14px 34px -30px rgba(30,22,10,.32);
+}
+.week-grid > .week-card:nth-child(n+5){
+  grid-column:span 4;
+}
+.week-card .day{
+  color:#8B5B24 !important;
+  font-weight:700;
+  letter-spacing:.095em;
+  margin-bottom:13px;
+}
+.week-card ul{gap:8px;}
+.week-card li{
+  position:relative;
+  padding-left:13px;
+  color:#5B5549 !important;
+  line-height:1.48;
+}
+.week-card li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.67em;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#D39B4C;
+}
+.week-grid > .week-card:last-child{
+  background:linear-gradient(145deg,#fffaf0 0%,#f8efe0 100%);
+  border-color:rgba(169,105,31,.22);
+}
+
+@media (max-width:980px){
+  .hub-section .section-desc{font-size:15px;}
+  .week-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .week-grid > .week-card,
+  .week-grid > .week-card:nth-child(n+5){grid-column:auto;min-height:148px;}
+  .week-grid > .week-card:last-child{grid-column:1 / -1;min-height:auto;}
+}
+@media (max-width:640px){
+  .hub-section{padding-top:86px;padding-bottom:82px;}
+  .hub-section .section-title{font-size:clamp(32px,9.7vw,42px);}
+  .hub-section .section-desc{font-size:14px;line-height:1.65;}
+  .hub-section .hub-graphic{margin-top:30px;}
+  .week-grid{grid-template-columns:1fr;gap:10px;}
+  .week-grid > .week-card,
+  .week-grid > .week-card:nth-child(n+5),
+  .week-grid > .week-card:last-child{grid-column:auto;min-height:auto;padding:19px 18px;}
+}
+
+
+/* ============ LANGUAGE + WEEX / INSTAGRAM ADDITIONS ============ */
+.lang-switch{
+  display:inline-flex;align-items:center;gap:4px;padding:4px 6px;border:1px solid rgba(244,213,154,.18);
+  border-radius:999px;background:rgba(255,255,255,.025);font:500 10px var(--font-mono);letter-spacing:.08em;
+}
+.lang-switch button{padding:5px 6px;border-radius:999px;color:#AFA795;cursor:pointer;transition:background .25s ease,color .25s ease;}
+.lang-switch button.is-active{background:rgba(244,213,154,.18);color:#F4D59A;}
+.lang-switch .lang-divider{color:#6D6659;}
+.btn-weex{border:1px solid rgba(244,213,154,.38);background:rgba(221,165,74,.09);color:#F4D59A;white-space:nowrap;}
+.btn-weex:hover{border-color:#F4D59A;background:rgba(221,165,74,.16);color:#FFF4D8;}
+.nav-actions{flex-wrap:wrap;justify-content:flex-end;}
+.mobile-weex-link{display:flex!important;align-items:center;justify-content:space-between;min-height:58px;border-bottom:1px solid rgba(244,213,154,.1);font-size:22px;font-weight:600;letter-spacing:-.02em;color:#F4EEDD;}
+.mobile-weex-link span{font:500 10px var(--font-mono);color:#B98A43;letter-spacing:.1em;}
+.mobile-lang-switch{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px;padding:11px;border:1px solid rgba(244,213,154,.12);border-radius:14px;background:rgba(255,255,255,.02);}
+.mobile-lang-switch button{padding:6px 14px;border-radius:999px;color:#AFA795;font:500 11px var(--font-mono);letter-spacing:.08em;}
+.mobile-lang-switch button.is-active{background:rgba(244,213,154,.18);color:#F4D59A;}
+.instagram-links{display:flex;flex-direction:column;gap:9px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(244,213,154,.10);}
+.instagram-links .social-label{font:500 10px var(--font-mono);letter-spacing:.10em;text-transform:uppercase;color:#CDA968;margin-bottom:2px;}
+.instagram-link{display:flex!important;align-items:center;gap:9px;margin:0!important;color:#B8AF9D!important;}
+.instagram-link:hover{color:#F4D59A!important;}
+.instagram-link svg{width:16px;height:16px;flex:0 0 auto;}
+@media (max-width:1100px){.btn-weex{padding:12px 15px!important;}.lang-switch{padding:3px 5px;}}
+@media (max-width:900px){.nav-actions .btn-weex{display:inline-flex;}.nav-actions .lang-switch{display:inline-flex;}.nav-actions .btn-weex{font-size:11px;min-height:42px;}}
+@media (max-width:700px){.nav-actions .btn-weex{padding:10px 12px!important;min-height:42px;}.nav-actions .lang-switch{display:none;}.mobile-weex-link{font-size:20px;}.instagram-links{margin-top:15px;}}
+@media (max-width:430px){.nav-actions .btn-weex{font-size:0;padding:10px 11px!important;}.nav-actions .btn-weex::before{content:'WEEX';font:600 10px var(--font-mono);letter-spacing:.08em;}}
+</style>
+
+</head>
+<body>
+<div class="announce-bar"><div class="announce-inner"><span class="announce-desktop">Alpha Moves Academy — członkostwo <strong>249 USD / miesiąc</strong> · możliwość płatności ratalnej</span><span class="announce-mobile"><strong>249 USD / mies.</strong> · raty w EasyCart</span><a href="https://easl.ink/ZB14j" rel="noopener" target="_blank">Dołącz →</a></div></div>
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+<div class="container nav-inner">
+<a aria-label="Alpha Moves Academy — strona główna" class="brand-lockup" href="index.html#top"><img alt="Logo Alpha Moves" src="assets/images/index-01.webp"/><span class="brand-name">Alpha <b>Moves</b></span></a>
+<ul class="nav-links">
+<li><a href="index.html#dlaczego-my">Diagnoza</a></li>
+<li><a href="index.html#co-w-srodku">Co w środku</a></li>
+<li><a href="index.html#zespol">Zespół</a></li>
+<li><a href="index.html#oferta">Oferta</a></li>
+<li><a href="index.html#faq">FAQ</a></li>
+</ul>
+<button aria-controls="mobileMenu" aria-expanded="false" aria-label="Otwórz menu" class="mobile-menu-toggle" id="mobileMenuToggle" type="button"><span></span><span></span></button><div class="nav-actions">
+<a class="btn btn-line" href="https://alphanews.pl/kurs-od-zera/#zapis" rel="noopener" style="padding:13px 22px;" target="_blank">Kurs od zera</a>
+<a class="btn btn-weex weex-nav-cta" data-weex-register href="https://www.weex.com/pl/register" rel="noopener" target="_blank"><span class="weex-label">WEEX · Zarejestruj się</span></a>
+<a class="btn btn-gold" href="https://easl.ink/ZB14j" rel="noopener" target="_blank"><span class="cta-full">Dołącz do Akademii</span><span class="cta-short">Dołącz</span></a>
+<div aria-label="Wybierz język" class="lang-switch" role="group"><button data-lang="pl" type="button">PL</button><span class="lang-divider">/</span><button data-lang="en" type="button">EN</button></div>
+</div>
+</div>
+</nav><div aria-hidden="true" class="mobile-menu" id="mobileMenu" style="scroll-margin-top:96px;">
+<div class="mobile-menu-backdrop" data-menu-close=""></div>
+<div aria-label="Menu główne" aria-modal="true" class="mobile-menu-panel" role="dialog">
+<div class="mobile-menu-head">
+<span class="mobile-menu-label">Alpha Moves Academy</span>
+<button aria-label="Zamknij menu" class="mobile-menu-close" data-menu-close="" type="button">×</button>
+</div>
+<nav aria-label="Nawigacja mobilna" class="mobile-menu-links">
+<a href="index.html#dlaczego-my">Diagnoza <span>01</span></a>
+<a href="index.html#co-w-srodku">Co w środku <span>02</span></a>
+<a href="index.html#zespol">Zespół <span>03</span></a>
+<a href="index.html#oferta">Oferta <span>04</span></a>
+<a href="index.html#faq">FAQ <span>06</span></a>
+<a class="mobile-weex-link" data-weex-register href="https://www.weex.com/pl/register" rel="noopener" target="_blank"><span class="mobile-weex-label">WEEX · Zarejestruj się</span><span>WEEX</span></a>
+</nav>
+<div class="mobile-menu-cta">
+<div><span>Alpha Moves Academy</span><strong>249 USD / miesiąc</strong><small>Opcja płatności ratalnej w EasyCart</small></div>
+<a class="btn btn-gold" href="https://easl.ink/ZB14j" rel="noopener" target="_blank">Dołącz do Akademii</a>
+<a class="mobile-menu-course" href="https://alphanews.pl/kurs-od-zera/#zapis" rel="noopener" target="_blank">Najpierw kurs od zera →</a>
+<div aria-label="Wybierz język" class="mobile-lang-switch" role="group"><button data-lang="pl" type="button">PL</button><span class="lang-divider">/</span><button data-lang="en" type="button">EN</button></div>
+</div>
+</div>
+</div>
+<!-- ============ HERO (DARK) ============ -->
+<header class="hero theme-dark" id="top" style="scroll-margin-top:96px;">
+<div class="container hero-container">
+<span class="eyebrow">Codziennie na rynku · UK + NY · FOREX · SPOT</span>
+<h1 class="hero-title" id="heroTitle">Trading i inwestycje to <em>rzemiosło.</em> Zbuduj proces, który działa pod presją.</h1>
+<p class="hero-sub reveal" id="heroSub">
+      SPOT, FOREX, indeksy, live trading, mental i sprzedaż — w jednym systemie pracy. Codziennie widzisz analizę, decyzje i proces, zamiast zostawać sam z teorią.
+    </p>
+<div class="hero-ctas reveal" id="heroCtas" style="scroll-margin-top:96px;">
+<a class="btn btn-gold btn-xl" href="https://easl.ink/ZB14j" rel="noopener" target="_blank">Dołącz do Akademii <span class="btn-price">249 USD/mies.</span></a>
+<a class="btn btn-course btn-xl" href="https://alphanews.pl/kurs-od-zera/#zapis" rel="noopener" target="_blank"><span>Kurs od zera</span><small>Dla początkujących</small></a>
+</div><div class="hero-confidence reveal"><div><strong>7 dni</strong><span>rytmu pracy z rynkiem</span></div><i></i><div><strong>UK + NY</strong><span>codzienne sesje live</span></div><i></i><div><strong>1 na 1</strong><span>konsultacje z zespołem</span></div></div>
+<div class="hero-tags reveal" id="heroTags" style="scroll-margin-top:96px;">
+<span>Trading</span><span>Inwestycje</span><span>Forex</span><span>SPOT</span><span>Sesje UK + NY</span><span>Mental</span>
+</div>
+<div class="hero-team-kicker reveal">Zespół prowadzący Akademię</div><div class="hero-team reveal" id="heroTeam" style="scroll-margin-top:96px;">
+<div class="portrait-card" title="Hubert Rzekieć">
+<img alt="Hubert Rzekieć" src="assets/images/index-02.webp"/>
+<div class="portrait-caption"><div class="name">Hubert Rzekieć</div><div class="role">Trader · Mental</div></div>
+</div><div class="portrait-card portrait-card-founder" title="Marcin Bzduń">
+<img alt="Marcin Bzduń" src="assets/images/index-03.webp"/><div class="portrait-caption"><div class="name">Marcin Bzduń</div><div class="role">Trader · Analityk</div></div>
+</div><div class="portrait-card" title="Albert Rzekieć">
+<img alt="Albert Rzekieć" src="assets/images/index-04.webp"/>
+<div class="portrait-caption"><div class="name">Albert Rzekieć</div><div class="role">Marketing · Support · Mental</div></div>
+</div></div><div class="trust-strip reveal"><span>Codzienne sesje UK i NY</span><span>Niedzielna odprawa FOREX</span><span>3h konsultacji 1 na 1 / mies.</span><span>Opcja płatności ratalnej w koszyku</span></div>
+</div>
+</header>
+<!-- ============ TICKER (DARK) ============ -->
+<div class="ticker-wrap theme-dark">
+<div class="ticker">
+<span>Codzienne sesje UK + NY</span><span>Sesje z psychologiem</span><span>Forex &amp; SPOT</span>
+<span>Konsultacje 1 na 1</span><span>Warsztaty sprzedaży</span><span>Mastermind na żywo</span>
+<span>Codzienne sesje UK + NY</span><span>Sesje z psychologiem</span><span>Forex &amp; SPOT</span>
+<span>Konsultacje 1 na 1</span><span>Warsztaty sprzedaży</span><span>Mastermind na żywo</span>
+</div>
+</div>
+<!-- ============ STAT ROW (LIGHT) ============ -->
+<div class="theme-light">
+<div class="container">
+<div class="stat-row reveal">
+<div class="stat-item"><div class="stat-num">3h</div><div class="stat-label">konsultacji 1 na 1 / mies.</div></div>
+<div class="stat-item"><div class="stat-num">6</div><div class="stat-label">ekspertów w jednym miejscu</div></div>
+<div class="stat-item"><div class="stat-num">7</div><div class="stat-label">dni w tygodniu przy rynku</div></div>
+<div class="stat-item"><div class="stat-num">2×</div><div class="stat-label">sesje live: UK + NY</div></div>
+</div>
+</div>
+<!-- ============ DIAGNOZA (LIGHT) ============ -->
+<section class="section brand-section" id="dlaczego-my" style="scroll-margin-top:96px;">
+<div class="container">
+<div class="section-header center">
+<span class="section-eyebrow">Diagnoza</span>
+<h2 class="section-title">Co dziś blokuje Cię <em>jako tradera?</em></h2>
+<p class="section-desc">Najczęstsze problemy nie zaczynają się na wykresie. Dlatego pracujemy jednocześnie nad analizą, procesem, dyscypliną i wsparciem.</p>
+</div>
+<div aria-label="Filozofia Alpha Moves" class="brand-quote">
+<span class="brand-quote-mark">“</span>
+<blockquote>Chłopaki się znają na robocie. Profesjonalnie to wygląda — mogę im zaufać.</blockquote>
+<p>To ma poczuć każdy, kto do nas trafia.</p>
+</div>
+<div class="diag-grid">
+<div class="diag-card reveal">
+<div class="diag-num">01</div>
+<h3>Brak czasu na naukę procesu</h3>
+<p>Handlujesz po godzinach, między pracą a życiem, bez przestrzeni na spokojną analizę i naukę.</p>
+<div class="diag-solution">
+<div class="label">Jak to rozwiązujemy</div>
+<p>Krótkie, codzienne odprawy rano i wieczorem zamiast wielogodzinnych kursów offline — wchodzisz w rynek stopniowo, bez przytłoczenia.</p>
+</div>
+</div>
+<div class="diag-card reveal">
+<div class="diag-num">02</div>
+<h3>Chaos mentalny w decyzjach</h3>
+<p>Wiesz, co powinieneś zrobić, ale emocje i presja momentu wygrywają z planem.</p>
+<div class="diag-solution">
+<div class="label">Jak to rozwiązujemy</div>
+<p>Regularne sesje z psycholog Marysią Kucwaj oraz sesje mentalne Alberta i Huberta — pracujesz nad głową tak samo systematycznie, jak nad strategią.</p>
+</div>
+</div>
+<div class="diag-card reveal">
+<div class="diag-num">03</div>
+<h3>Brak dyscypliny i planu</h3>
+<p>Transakcje wychodzą przypadkowo, bez spójnej checklisty i stałego procesu sprawdzania rynku.</p>
+<div class="diag-solution">
+<div class="label">Jak to rozwiązujemy</div>
+<p>Cotygodniowa odprawa-analiza i checklist od Alicji na FOREX, plus codzienny live trading, gdzie widzisz proces decyzyjny na żywo.</p>
+</div>
+</div>
+<div class="diag-card reveal">
+<div class="diag-num">04</div>
+<h3>Poczucie osamotnienia</h3>
+<p>Uczysz się sam z materiałów, bez nikogo, kto sprawdzi Twoje transakcje i odpowie na pytania.</p>
+<div class="diag-solution">
+<div class="label">Jak to rozwiązujemy</div>
+<p>3 godziny konsultacji 1 na 1 miesięcznie z każdym z zespołu oraz mastermind na żywo raz w miesiącu, gdzie to Ty masz mikrofon.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ============ POZIOMY PROGRAMU (DARK) ============ -->
+<section class="section theme-dark framework-section">
+<div class="container" style="text-align:center;">
+<span class="section-eyebrow">Framework Alpha Moves</span>
+<h2 class="section-title">Od chaosu do <em>powtarzalnego procesu.</em></h2>
+<p class="section-desc" style="max-width:650px; margin: 0 auto;">Pięć kolejnych etapów: fundament, ryzyko, analiza, psychologia i samodzielność. Każdy poziom dokłada konkretną praktykę — bez przeskakiwania podstaw.</p>
+<div class="layers" style="margin-top:56px;">
+<div class="layer-row reveal">
+<div class="layer-num">0</div>
+<div>
+<h3>Fundament i spokojna głowa</h3>
+<p>Zaczynasz od uporządkowania podejścia do ryzyka i pierwszych sesji mentalnych — zanim jeszcze wejdziesz z realnym kapitałem.</p>
+<div class="realizacja"><b>Realizacja:</b> sesje wprowadzające z psycholog Marysią i codzienne odprawy Marcina.</div>
+</div>
+</div>
+<div class="layer-row reveal">
+<div class="layer-num">1</div>
+<div>
+<h3>Zarządzanie ryzykiem</h3>
+<p>Uczysz się chronić kapitał, zanim zaczniesz go pomnażać — wielkość pozycji, stop lossy, dyscyplina wyjścia.</p>
+<div class="realizacja"><b>Realizacja:</b> checklisty i codzienny live trading pokazujący proces na żywo.</div>
+</div>
+</div>
+<div class="layer-row reveal">
+<div class="layer-num">2</div>
+<div>
+<h3>Strategia i analiza</h3>
+<p>Poznajesz pivoty i strategię scalpingu Marcina oraz cotygodniową analizę rynku FOREX od Alicji.</p>
+<div class="realizacja"><b>Realizacja:</b> 2× lekcje z autorskiego kursu oraz niedzielna odprawa-analiza.</div>
+</div>
+</div>
+<div class="layer-row reveal">
+<div class="layer-num">3</div>
+<div>
+<h3>Psychologia i dyscyplina</h3>
+<p>Pogłębiasz pracę nad głową — rozpoznajesz własne wzorce, uczysz się trzymać planu pod presją.</p>
+<div class="realizacja"><b>Realizacja:</b> regularne sesje mentalne z Albertem i Hubertem Rzekieć.</div>
+</div>
+</div>
+<div class="layer-row reveal">
+<div class="layer-num">4</div>
+<div>
+<h3>Samodzielność i rozwój</h3>
+<p>Masz własny, powtarzalny proces. Konsultacje 1 na 1 i mastermind pomagają go dalej dopracowywać.</p>
+<div class="realizacja"><b>Realizacja:</b> 3h konsultacji miesięcznie oraz comiesięczny mastermind na żywo.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ TWOJA DROGA — 3 KROKI (LIGHT) ============ -->
+<div class="theme-light">
+<section class="section" style="padding-bottom:0;">
+<div class="container">
+<div class="section-header center">
+<span class="section-eyebrow">Twoja droga</span>
+<h2 class="section-title">Jak wygląda praca <em>na co dzień.</em></h2>
+</div>
+<div class="steps-3">
+<div class="step-card reveal">
+<div class="step-badge">1</div>
+<h3>Wchodzisz do systemu</h3>
+<p>Odprawa rano, odprawa wieczorem, dostęp do materiałów i harmonogramu sesji — od pierwszego dnia wiesz, co i kiedy.</p>
+</div>
+<div class="step-card reveal">
+<div class="step-badge">2</div>
+<h3>Pracujesz na rynku i głowie</h3>
+<p>Live trading, checklisty, sesje mentalne i konsultacje 1 na 1 — codziennie budujesz proces, nie tylko oglądasz nagrania.</p>
+</div>
+<div class="step-card reveal">
+<div class="step-badge">3</div>
+<h3>Sprawdzasz się na mastermindzie</h3>
+<p>Raz w miesiącu masz mikrofon — pytasz, konfrontujesz swoje decyzje z zespołem i idziesz dalej z jasnym planem.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ============ HUB / SYSTEM WSPARCIA (DARK) ============ -->
+<section class="section hub-section theme-dark">
+<div class="container">
+<span class="section-eyebrow">System wsparcia</span>
+<h2 class="section-title">Nie zostajesz z tym <em>sam.</em></h2>
+<p class="section-desc" style="max-width:560px; margin-left:auto; margin-right:auto;">Sześciu ekspertów, jeden cel — Twój rozwój jako tradera. Trading, mental i sprzedaż spięte w jeden system wsparcia, dostępny każdego dnia.</p>
+<div class="hub-graphic">
+<svg fill="none" viewbox="0 0 320 260">
+<defs>
+<radialgradient cx="50%" cy="50%" id="hubGrad" r="50%">
+<stop offset="0%" stop-color="#F6CD8E"></stop>
+<stop offset="100%" stop-color="#A9691F"></stop>
+</radialgradient>
+</defs>
+<line class="hub-line" x1="160" x2="160" y1="130" y2="40"></line>
+<line class="hub-line" x1="160" x2="70" y1="130" y2="80"></line>
+<line class="hub-line" x1="160" x2="250" y1="130" y2="80"></line>
+<line class="hub-line" x1="160" x2="60" y1="130" y2="190"></line>
+<line class="hub-line" x1="160" x2="260" y1="130" y2="190"></line>
+<line class="hub-line" x1="160" x2="160" y1="130" y2="225"></line>
+<g class="hub-node"><circle cx="160" cy="40" r="20"></circle></g>
+<g class="hub-node"><circle cx="70" cy="80" r="20"></circle></g>
+<g class="hub-node"><circle cx="250" cy="80" r="20"></circle></g>
+<g class="hub-node"><circle cx="60" cy="190" r="20"></circle></g>
+<g class="hub-node"><circle cx="260" cy="190" r="20"></circle></g>
+<g class="hub-node"><circle cx="160" cy="225" r="20"></circle></g>
+<g class="hub-center"><circle cx="160" cy="130" r="26"></circle></g>
+<path d="M160 118 l4 9 9 1 -7 6 2 9 -8 -5 -8 5 2 -9 -7 -6 9 -1z" fill="#1B1305"></path>
+</svg>
+</div>
+</div>
+</section>
+<!-- ============ CO W ŚRODKU (LIGHT) ============ -->
+<div class="theme-light">
+<section class="section brand-section" id="co-w-srodku" style="scroll-margin-top:96px;">
+<div class="container">
+<div class="section-header center">
+<span class="section-eyebrow">Czego możesz oczekiwać w Akademii Alpha Moves</span>
+<h2 class="section-title">Rynek, proces i wsparcie <em>w jednym miejscu.</em></h2>
+<p class="section-desc">Nie tylko materiały. Dostajesz codzienny rytm pracy, analizy, sesje live i ludzi, z którymi możesz skonfrontować swoje decyzje.</p>
+</div>
+<div class="feature-grid">
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M3 17l5-6 4 4 9-10"></path><path d="M14 5h7v7"></path></svg></div>
+<h4>Rozszerzony segment SPOT</h4>
+<p>Codzienne analizy SPOT, potencjalne monety pod wzrosty oraz regularne update’y rynku BTC/ETH.</p>
+<span class="feature-tag">Premium · Codziennie</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M4 17l5-5 4 3 7-9"></path><path d="M16 6h4v4"></path><circle cx="5" cy="5" r="1.5"></circle></svg></div>
+<h4>Sygnały: krypto, FOREX i indeksy</h4>
+<p>Setupy i sygnały rynkowe wraz z kontekstem analitycznym. Traktujemy je jako element procesu i edukacji, nie obietnicę wyniku.</p>
+<span class="feature-tag">Krypto · FOREX · Indeksy</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><rect height="7" width="3" x="4" y="10"></rect><rect height="11" width="3" x="10.5" y="6"></rect><rect height="14" width="3" x="17" y="3"></rect></svg></div>
+<h4>Alicja — Forex</h4>
+<p>Traderka rynku FOREX. Pełna odprawa-analiza w każdą niedzielę i checklist w każdą środę.</p>
+<span class="feature-tag">Niedziela + środa</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l3 2"></path></svg></div>
+<h4>Sesje z psycholog Marysią</h4>
+<p>Dbaj o mental, to będziesz profesjonalnym traderem — sesje z psycholog Marysią Kucwaj.</p>
+<span class="feature-tag">Psychologia tradingu</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M4 20v-2a4 4 0 014-4h3"></path><circle cx="9" cy="7" r="3"></circle><path d="M14 14l3 3 5-5"></path></svg></div>
+<h4>Sprzedaż z Kacprem Gochem</h4>
+<p>Sesje nauki wszystkiego dookoła sprzedaży — dla tych, którzy chcą zarabiać nie tylko na rynku.</p>
+<span class="feature-tag">Sprzedaż</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 3c-3 3-3 7 0 10 3-3 3-7 0-10z"></path><path d="M12 13v8"></path></svg></div>
+<h4>Sesje mentalne Albert &amp; Hubert</h4>
+<p>Praca nad głową i podejściem do rynku prowadzona przez Alberta i Huberta Rzekieć.</p>
+<span class="feature-tag">Mental tradera</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg></div>
+<h4>Codzienne odprawy — rano i wieczór</h4>
+<p>Codzienne odprawy Marcina rano i wieczorem — najważniejszy kontekst rynkowy, plan i podsumowanie dnia.</p>
+<span class="feature-tag">2× dziennie</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l2.5 2.5"></path></svg></div>
+<h4>3h konsultacji miesięcznie</h4>
+<p>Każdy ma do dyspozycji 3 godziny konsultacji 1 na 1 z każdym z naszej trójki.</p>
+<span class="feature-tag">1 na 1 · Co miesiąc</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><rect height="12" rx="2" width="18" x="3" y="6"></rect><circle cx="9" cy="12" r="2.3"></circle><path d="M15 10h3M15 14h2"></path></svg></div>
+<h4>Codzienny live trading</h4>
+<p>Codzienne sesje live podczas sesji UK i NY — analiza rynku i podejmowanie decyzji w czasie rzeczywistym.</p>
+<span class="feature-tag">Live · UK + NY</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M20 20l-4.7-4.7"></path></svg></div>
+<h4>Analizy na życzenie</h4>
+<p>Masz instrument, który Cię interesuje? Poprosisz — przeanalizujemy.</p>
+<span class="feature-tag">Na życzenie</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 016.5 3H19v16H6.5A2.5 2.5 0 004 21"></path><path d="M4 5.5V19"></path></svg></div>
+<h4>Materiały edukacyjne</h4>
+<p>Baza wiedzy budowana od podstaw — wracaj do niej, kiedy tylko potrzebujesz.</p>
+<span class="feature-tag">Biblioteka wiedzy</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><rect height="12" rx="3" width="6" x="9" y="2"></rect><path d="M6 11a6 6 0 0012 0M12 18v3M9 21h6"></path></svg></div>
+<h4>Mastermind na żywo</h4>
+<p>Raz w miesiącu spotkanie, na którym to Wy macie mikrofon — pytania, wymiana, dyskusja.</p>
+<span class="feature-tag">1× w miesiącu</span>
+</div>
+<div class="feature-card reveal">
+<div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24"><path d="M12 4v14M12 4c-2.5-1.4-5.5-1.7-8-1v14c2.5-.7 5.5-.4 8 1 2.5-1.4 5.5-1.7 8-1V3c-2.5-.7-5.5-.4-8 1z"></path></svg></div>
+<h4>2× lekcje z kursu Marcina</h4>
+<p>Pivoty i strategia scalpingu — dwie lekcje wprost z autorskiego kursu Marcina.</p>
+<span class="feature-tag">Bonus · 2 lekcje</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ HARMONOGRAM (LIGHT) ============ -->
+<section class="section" style="padding-top:0;">
+<div class="container">
+<div class="section-header center">
+<span class="section-eyebrow">Rytm tygodnia</span>
+<h2 class="section-title">Tak wygląda <em>typowy tydzień.</em></h2>
+<p class="section-desc">Stały rytm, w którym zawsze wiesz, co się dzieje i kiedy.</p>
+</div>
+<div class="week-grid">
+<div class="week-card reveal"><div class="day">Poniedziałek</div><ul><li>Sesja live UK</li><li>Sesja live NY</li><li>Odprawa rano i wieczorem</li></ul></div>
+<div class="week-card reveal"><div class="day">Wtorek</div><ul><li>Sesja live UK</li><li>Sesja live NY</li><li>Sesje mentalne / konsultacje</li></ul></div>
+<div class="week-card reveal"><div class="day">Środa</div><ul><li>Sesja live UK</li><li>Sesja live NY</li><li>Checklist FOREX od Alicji</li></ul></div>
+<div class="week-card reveal"><div class="day">Czwartek</div><ul><li>Sesja live UK</li><li>Sesja live NY</li><li>Konsultacje 1 na 1</li></ul></div>
+<div class="week-card reveal"><div class="day">Piątek</div><ul><li>Sesja live UK</li><li>Sesja live NY</li><li>Podsumowanie tygodnia</li></ul></div>
+<div class="week-card reveal"><div class="day">Sobota</div><ul><li>Materiały edukacyjne</li><li>Analizy na życzenie</li><li>Praca własna / Q&amp;A</li></ul></div>
+<div class="week-card reveal"><div class="day">Niedziela</div><ul><li>Pełna odprawa FOREX</li><li>Plan na kolejny tydzień</li><li>Mastermind — raz w miesiącu</li></ul></div>
+</div>
+</div>
+</section>
+<!-- ============ ZESPÓŁ (LIGHT) ============ -->
+<section class="section brand-section" id="zespol" style="scroll-margin-top:96px;">
+<div class="container">
+<div class="section-header center">
+<span class="section-eyebrow">Nasz zespół</span>
+<h2 class="section-title">Ludzie, z którymi <em>pracujesz</em> na co dzień.</h2>
+<p class="section-desc">Traderzy, psycholog i ekspert sprzedaży — osoby, z którymi pracujesz w konkretnych obszarach przez cały miesiąc.</p>
+</div>
+<div class="team-grid">
+<div class="team-card reveal">
+<div class="team-photo"><img alt="Marcin Bzduń" src="assets/images/index-05.webp"/></div>
+<div class="team-meta">
+<h3>Marcin Bzduń</h3>
+<div class="team-role">Trader · Analityk</div>
+<p>Prowadzi codzienne odprawy, live trading oraz autorski kurs pivotów i strategii scalpingu.</p>
+</div>
+</div>
+<div class="team-card reveal">
+<div class="team-photo"><img alt="Hubert Rzekieć" src="assets/images/index-06.webp"/></div>
+<div class="team-meta">
+<h3>Hubert Rzekieć</h3>
+<div class="team-role">Trader · Mental</div>
+<p>Łączy analizę rynku z pracą nad podejściem i dyscypliną tradera.</p>
+</div>
+</div>
+<div class="team-card reveal">
+<div class="team-photo"><img alt="Albert Rzekieć" src="assets/images/index-07.webp"/></div>
+<div class="team-meta">
+<h3>Albert Rzekieć</h3>
+<div class="team-role">Marketing · Support · Mental</div>
+<p>Wspiera członków Akademii w budowaniu spójnego, powtarzalnego procesu decyzyjnego.</p>
+</div>
+</div>
+<div class="team-card reveal">
+<div class="team-photo"><img alt="Marysia Kucwaj" src="assets/images/index-08.webp"/></div>
+<div class="team-meta">
+<h3>Marysia Kucwaj</h3>
+<div class="team-role">Psycholog</div>
+<p>Prowadzi sesje mentalne — bo dbanie o głowę to fundament profesjonalnego tradingu.</p>
+</div>
+</div>
+<div class="team-card reveal">
+<div class="team-photo"><img alt="Alicja Matuszewska" src="assets/images/index-09.webp"/></div>
+<div class="team-meta">
+<h3>Alicja Matuszewska</h3>
+<div class="team-role">Traderka · Forex</div>
+<p>Cotygodniowa odprawa-analiza rynku FOREX oraz checklist na środę.</p>
+</div>
+</div>
+<div class="team-card reveal">
+<div class="team-photo"><img alt="Kacper Goch" src="assets/images/index-10.webp"/></div>
+<div class="team-meta">
+<h3>Kacper Goch</h3>
+<div class="team-role">Lider · Ekspert sprzedaży</div>
+<p>Uczy wszystkiego dookoła sprzedaży — bo zarabianie to nie tylko wykres.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ KWALIFIKACJA (LIGHT) ============ -->
+<section class="section" style="padding-top:0;">
+<div class="container">
+<div class="section-header center">
+<span class="section-eyebrow">Kwalifikacja</span>
+<h2 class="section-title">To jest dla Ciebie, jeśli chcesz <em>pracować nad procesem.</em></h2>
+<p class="section-desc">Najwięcej wynoszą osoby, które przychodzą gotowe do systematycznej pracy nad sobą i swoim podejściem do rynku.</p>
+</div>
+<div class="qualify-grid">
+<div class="qualify-card yes reveal">
+<h3>Dla Ciebie</h3>
+<ul>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Chcesz zbudować własny, powtarzalny proces decyzyjny.</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Jesteś gotowy pracować nad mentalem, nie tylko strategią.</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Chcesz codziennej obecności zespołu, nie jednorazowego kursu.</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Traktujesz trading jako rzemiosło, które da się rozwijać latami.</li>
+</ul>
+</div>
+<div class="qualify-card no reveal">
+<h3>Nie dla Ciebie</h3>
+<ul>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>Chcesz wyłącznie kopiować sygnały bez rozumienia ryzyka i kontekstu.</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>Oczekujesz gwarancji zysku bez własnej pracy.</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>Nie masz czasu ani chęci na regularną obecność.</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>Traktujesz rynek jako szybki sposób na "zarobienie fortuny".</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ OFERTA (LIGHT) ============ -->
+<section class="section brand-section conversion-section" id="oferta" style="padding-top:0;;scroll-margin-top:96px;">
+<div class="container">
+<div class="section-header center">
+<span class="section-eyebrow">Oferta</span>
+<h2 class="section-title">Dołącz do <em>Alpha Moves Academy.</em></h2>
+<p class="section-desc">Jedna decyzja, pełny dostęp do zespołu, rynku i wsparcia — każdego dnia.</p>
+</div>
+<div class="offer-wrap">
+<div class="offer-card reveal offer-card-premium">
+<span class="offer-badge">Członkostwo</span><span class="offer-status"><i></i>Dostęp do pełnej Akademii</span>
+<h3>Alpha Moves Academy</h3>
+<p style="color:var(--ink-soft); font-size:14px;">Pełny dostęp do wszystkiego, co opisaliśmy powyżej.</p>
+<div class="offer-price">
+<span class="amount">249 USD</span>
+<span class="period">/ miesiąc</span>
+</div>
+<ul class="offer-list">
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Codzienne analizy SPOT + update BTC/ETH</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Sygnały krypto, FOREX i indeksy</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Cotygodniowa odprawa-analiza i checklist FOREX</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Sesje z psycholog Marysią Kucwaj</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Sesje sprzedażowe z Kacprem Gochem</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Sesje mentalne Alberta i Huberta</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Codzienne odprawy + sesje live UK i NY</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>3h konsultacji 1 na 1 miesięcznie z każdym z zespołu</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>Mastermind na żywo raz w miesiącu</li>
+<li><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>2× lekcje z kursu Marcina — pivoty i scalping</li>
+</ul>
+<a class="btn btn-gold" href="https://easl.ink/ZB14j" rel="noopener" style="width:100%;" target="_blank">Przejdź do koszyka — 249 USD</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ FAQ (LIGHT) ============ -->
+<section class="section brand-section" id="faq" style="padding-top:0;;scroll-margin-top:96px;">
+<div class="container">
+<div class="section-header center">
+<span class="section-eyebrow">Pytania, które słyszymy najczęściej</span>
+<h2 class="section-title">Zanim <em>dołączysz.</em></h2>
+</div>
+<div class="faq-grid" style="max-width:760px; margin:0 auto;">
+<div class="faq-item reveal">
+<h4><span class="q-mark">?</span>Czy to jest dla początkujących?</h4>
+<p>Tak, ale musisz chcieć się uczyć procesu, nie szukać gotowych sygnałów do kopiowania. Odprawy i materiały budujemy tak, by można było wejść od podstaw.</p>
+</div>
+<div class="faq-item reveal">
+<h4><span class="q-mark">?</span>Dostanę gotowe sygnały do kopiowania?</h4>
+<p>Nie o to tu chodzi. Pokazujemy proces analizy i decyzji na żywo, żebyś sam nauczył się podejmować decyzje — a nie kopiował cudze bez zrozumienia.</p>
+</div>
+<div class="faq-item reveal">
+<h4><span class="q-mark">?</span>Ile czasu muszę poświęcać dziennie?</h4>
+<p>Odprawy trwają krótko, live trading możesz oglądać wtedy, kiedy pasuje. Reszta — materiały, konsultacje, mastermind — dopasowujesz do własnego kalendarza.</p>
+</div>
+<div class="faq-item reveal">
+<h4><span class="q-mark">?</span>Co jeśli nie mam pojęcia o mentalu w tradingu?</h4>
+<p>Właśnie po to są sesje z psycholog Marysią. Większość traderów zawodzi nie na strategii, tylko na głowie — to pierwsza rzecz, którą u nas poukładasz.</p>
+</div>
+
+</div>
+</div>
+</section>
+</div>
+<!-- ============ CTA FINAL (DARK) ============ -->
+<section class="cta-final theme-dark" id="dolacz" style="scroll-margin-top:96px;">
+<div class="container">
+<div class="cta-final-inner reveal">
+<h2>Zbuduj proces, który działa wtedy, gdy <em>rynek przyspiesza.</em></h2>
+<p>Jeśli chcesz pracować z rynkiem regularnie, korzystać z codziennych sesji i mieć zespół do konsultacji — Alpha Moves Academy daje Ci gotowy rytm pracy.</p>
+<div class="hero-ctas">
+<a class="btn btn-gold" href="https://easl.ink/ZB14j" rel="noopener" target="_blank">Dołącz za 249 USD / mies.</a>
+<a class="btn btn-line" href="https://alphanews.pl/kurs-od-zera/#zapis" rel="noopener" target="_blank">Zobacz kurs od zera</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ FOOTER (DARK) ============ -->
+<footer class="theme-dark" id="kontakt">
+<div class="container">
+<div class="footer-top">
+<div class="footer-brand footer-brand-premium">
+<img alt="Alpha Moves Academy" class="footer-logo-image" src="assets/images/index-11.webp"/>
+<p>Akademia tradingu i inwestycji: codzienna praca z rynkiem, mental, konsultacje i praktyczny proces decyzyjny.</p>
+</div>
+<div class="footer-cols">
+<div class="footer-col">
+<h5>Nawigacja</h5>
+<a href="index.html#dlaczego-my">Dlaczego my</a>
+<a href="index.html#co-w-srodku">Co w środku</a>
+<a href="index.html#zespol">Zespół</a>
+</div>
+<div class="footer-col">
+<h5>Kontakt</h5>
+<p>kontakt@alphamoves.pl</p>
+<a href="https://easl.ink/ZB14j" rel="noopener" target="_blank">Dołącz do Akademii</a>
+<div class="instagram-links"><span class="social-label">Instagram</span>
+<a class="instagram-link" href="https://www.instagram.com/hubertrzekiec?cplk=dDc0ODV0bnNrOGh1" rel="noopener" target="_blank" aria-label="Instagram Hubert Rzekieć"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.6" r=".7" fill="currentColor" stroke="none"></circle></svg>Hubert Rzekieć</a>
+<a class="instagram-link" href="https://www.instagram.com/marcin.bzdun?rpxt=dWdjcXJ6OWFtYjV0" rel="noopener" target="_blank" aria-label="Instagram Marcin Bzduń"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.6" r=".7" fill="currentColor" stroke="none"></circle></svg>Marcin Bzduń</a>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="legal-links"><span>© 2026 Alpha Moves Academy.</span><a href="polityka-prywatnosci.html">Polityka prywatności</a><a href="regulamin.html">Regulamin</a><a href="https://alphanews.pl/kurs-od-zera/#zapis" rel="noopener" target="_blank">Kurs od zera</a></div>
+<p class="risk-note">Trading i inwestowanie wiążą się z ryzykiem utraty kapitału. Materiały mają charakter edukacyjny i nie stanowią rekomendacji inwestycyjnej ani porady finansowej.</p>
+</div>
+</div>
+</footer>
+<div class="sticky-cta" id="stickyCta" style="scroll-margin-top:96px;">
+<div class="info"><strong>Alpha Moves Academy · 249 USD/mies.</strong><span>EasyCart · opcja płatności ratalnej</span></div>
+<a class="btn btn-gold" href="https://easl.ink/ZB14j" rel="noopener" style="padding:11px 22px; font-size:13px;" target="_blank">Dołącz</a>
+</div>
+
+<script src="assets/js/alphamoves-i18n.js"></script>
+<script>
+  if (window.gsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+  const nav = document.getElementById('nav');
+  const announceBar = document.querySelector('.announce-bar');
+  const stickyCta = document.getElementById('stickyCta');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) { nav.classList.add('scrolled'); announceBar.classList.add('hide'); }
+    else { nav.classList.remove('scrolled'); announceBar.classList.remove('hide'); }
+    if (window.scrollY > 700) stickyCta.classList.add('show');
+    else stickyCta.classList.remove('show');
+  });
+
+  const heroTitle = document.getElementById('heroTitle');
+  const temp = document.createElement('div');
+  temp.innerHTML = heroTitle.innerHTML;
+  heroTitle.innerHTML = '';
+
+  function wrapWords(node, target){
+    node.childNodes.forEach(child => {
+      if (child.nodeType === 3){
+        const words = child.textContent.split(' ').filter(w => w.length);
+        words.forEach((w) => {
+          const span = document.createElement('span');
+          span.className = 'word';
+          span.textContent = w;
+          target.appendChild(span);
+          target.appendChild(document.createTextNode(' '));
+        });
+      } else if (child.tagName === 'EM'){
+        const em = document.createElement('em');
+        target.appendChild(em);
+        wrapWords(child, em);
+      }
+    });
+  }
+  wrapWords(temp, heroTitle);
+
+  if (window.gsap) {
+    const tl = gsap.timeline({ delay: 0.12 });
+    tl.to('.hero .eyebrow', { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' })
+      .to('.hero-title .word', { opacity: 1, y: 0, duration: 0.82, stagger: 0.038, ease: 'power3.out' }, '-=0.38')
+      .to('#heroSub', { opacity: 1, y: 0, duration: 0.72, ease: 'power3.out' }, '-=0.48')
+      .to('#heroCtas', { opacity: 1, y: 0, duration: 0.62, ease: 'power3.out' }, '-=0.42')
+      .to('.hero-confidence', { opacity: 1, y: 0, duration: 0.58, ease: 'power3.out' }, '-=0.38')
+      .to('#heroTags', { opacity: 1, y: 0, duration: 0.58, ease: 'power3.out' }, '-=0.36')
+      .to('#heroTeam', { opacity: 1, y: 0, duration: 0.78, ease: 'power3.out' }, '-=0.34')
+      .to('.trust-strip', { opacity: 1, y: 0, duration: 0.58, ease: 'power3.out' }, '-=0.45');
+
+    gsap.utils.toArray('.reveal').forEach(el => {
+      if (el.closest('.hero')) return;
+      gsap.to(el, { opacity: 1, y: 0, duration: 0.82, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
+    });
+
+    ['.feature-grid', '.team-grid', '.why-list', '.faq-grid', '.diag-grid', '.layers', '.steps-3', '.week-grid'].forEach(sel => {
+      const items = gsap.utils.toArray(sel + ' > *');
+      items.forEach((el, i) => {
+        gsap.to(el, { opacity: 1, y: 0, duration: 0.72, ease: 'power3.out', delay: (i % 3) * 0.06, scrollTrigger: { trigger: el, start: 'top 92%' } });
+      });
+    });
+
+    gsap.utils.toArray('.hub-node, .hub-center').forEach((el, i) => {
+      gsap.from(el, { scale: 0, opacity: 0, duration: 0.55, delay: 0.08 * i, ease: 'back.out(2)', transformOrigin: '50% 50%', scrollTrigger: { trigger: '.hub-graphic', start: 'top 88%' } });
+    });
+  } else {
+    document.querySelectorAll('.reveal, .hero-title .word').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }
+
+
+  // Mobile navigation
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const menuCloseEls = document.querySelectorAll('[data-menu-close]');
+  const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+  function setMobileMenu(open){
+    if (!mobileMenu || !mobileMenuToggle) return;
+    mobileMenu.classList.toggle('is-open', open);
+    mobileMenu.setAttribute('aria-hidden', String(!open));
+    mobileMenuToggle.setAttribute('aria-expanded', String(open));
+    mobileMenuToggle.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+    document.body.classList.toggle('menu-open', open);
+  }
+  mobileMenuToggle?.addEventListener('click', () => setMobileMenu(!mobileMenu.classList.contains('is-open')));
+  menuCloseEls.forEach(el => el.addEventListener('click', () => setMobileMenu(false)));
+  mobileMenuLinks.forEach(el => el.addEventListener('click', () => setMobileMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMobileMenu(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 900) setMobileMenu(false); });
+</script>
+</body>
+</html>

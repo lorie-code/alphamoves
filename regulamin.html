@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0A0A08">
+<title>Regulamin serwisów — Alpha Moves Academy</title>
+<meta name="description" content="Regulamin serwisów Alpha Moves Academy.">
+<link href="assets/fonts/fonts.css" rel="stylesheet"/>
+<style>
+:root{--gold:#E3963C;--gold-2:#F6CD8E;--gold-deep:#A9691F;--gold-ink:#1B1305;--font-serif:'Instrument Serif',serif;--font-display:'Geist',sans-serif;--font-body:'Geist',sans-serif;--font-mono:'JetBrains Mono',monospace;}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:#0A0A08;color:#F3EEDF;font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+.container{width:100%;max-width:1180px;margin:0 auto;padding:0 32px;}
+img{max-width:100%;display:block;}
+@media(max-width:640px){.container{padding:0 20px;}}
+
+
+/* ============ LEGAL PAGES / SINGLE-FILE ROUTER ============ */
+.legal-page{display:none;min-height:100vh;background:
+  radial-gradient(circle at 50% 0%,rgba(221,165,74,.12),transparent 30%),
+  linear-gradient(180deg,#070806 0%,#0A0B08 100%);color:#F3EEDF;}
+.legal-nav{position:sticky;top:0;z-index:40;background:rgba(7,8,6,.88);
+  backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid rgba(244,213,154,.12);}
+.legal-nav-inner{min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.legal-brand{display:flex;align-items:center;gap:11px;font-family:var(--font-serif);font-size:24px;letter-spacing:-.02em;}
+.legal-brand-mark{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--gold-2),var(--gold) 55%,var(--gold-deep));
+  color:var(--gold-ink);font:800 11px var(--font-display);
+  box-shadow:0 0 0 1px rgba(244,213,154,.22),0 12px 28px rgba(0,0,0,.22);}
+.legal-brand b{color:var(--gold);font-weight:400;}
+.legal-nav-actions{display:flex;align-items:center;gap:10px;}
+.legal-nav-actions a{font-size:12px;font-family:var(--font-mono);letter-spacing:.04em;color:#BDB5A5;}
+.legal-nav-actions .legal-home{padding:10px 15px;border:1px solid rgba(244,213,154,.18);
+  border-radius:999px;color:#F3EEDF;transition:.25s ease;}
+.legal-nav-actions .legal-home:hover{border-color:rgba(244,213,154,.4);background:rgba(221,165,74,.07);}
+
+.legal-hero{padding:92px 0 42px;text-align:center;}
+.legal-overline{font:500 10px var(--font-mono);letter-spacing:.2em;text-transform:uppercase;color:#CDA968;}
+.legal-title{max-width:880px;margin:16px auto 0;font:600 clamp(40px,6vw,68px)/1.02 var(--font-display);
+  letter-spacing:-.045em;text-wrap:balance;}
+.legal-title em{font-family:var(--font-serif);font-weight:400;font-style:italic;color:#F2D18F;}
+.legal-lead{max-width:700px;margin:22px auto 0;color:#BDB5A5;font-size:16px;line-height:1.7;}
+.legal-draft{max-width:820px;margin:28px auto 0;padding:14px 17px;border-radius:14px;
+  border:1px solid rgba(221,165,74,.24);background:rgba(221,165,74,.07);color:#D8C8AA;
+  font-size:12.5px;line-height:1.6;text-align:left;}
+.legal-draft strong{color:#F4D59A;}
+
+.legal-layout{display:grid;grid-template-columns:220px minmax(0,760px);gap:48px;
+  justify-content:center;padding:30px 0 100px;}
+.legal-toc{position:sticky;top:98px;align-self:start;border:1px solid rgba(244,213,154,.11);
+  border-radius:18px;padding:18px;background:rgba(255,255,255,.018);}
+.legal-toc-title{font:500 9px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:#8F8778;margin-bottom:10px;}
+.legal-toc a{display:block;padding:8px 0;color:#9E9688;font-size:12px;line-height:1.35;border-bottom:1px solid rgba(244,213,154,.07);}
+.legal-toc a:last-child{border-bottom:0;}
+.legal-toc a:hover{color:#F4D59A;}
+
+.legal-content{min-width:0;}
+.legal-section{padding:30px 0;border-top:1px solid rgba(244,213,154,.11);scroll-margin-top:96px;}
+.legal-section:first-child{border-top:0;padding-top:0;}
+.legal-section h2{font:600 24px/1.25 var(--font-display);letter-spacing:-.02em;color:#F3EEDF;margin-bottom:13px;}
+.legal-section h3{font:600 16px/1.4 var(--font-display);color:#E9DEC8;margin:20px 0 8px;}
+.legal-section p,.legal-section li{color:#B9B1A2;font-size:14px;line-height:1.75;}
+.legal-section p+p{margin-top:12px;}
+.legal-section ul,.legal-section ol{margin:12px 0 0 20px;}
+.legal-section li+li{margin-top:8px;}
+.legal-section strong{color:#ECE2D0;}
+.legal-placeholder{color:#F4D59A!important;font-family:var(--font-mono);font-size:12px!important;}
+.legal-card{margin-top:14px;padding:18px 20px;border-radius:16px;border:1px solid rgba(244,213,154,.1);
+  background:rgba(255,255,255,.02);}
+.legal-card p{margin:0;}
+.legal-meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:20px;color:#817A6D;font:500 10px var(--font-mono);letter-spacing:.04em;}
+
+.legal-footer{border-top:1px solid rgba(244,213,154,.12);padding:34px 0 44px;background:#080907;}
+.legal-footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:28px;flex-wrap:wrap;}
+.legal-footer p{font-size:11.5px;color:#746E62;max-width:650px;line-height:1.6;}
+.legal-footer-links{display:flex;gap:14px;flex-wrap:wrap;}
+.legal-footer-links a{font-size:12px;color:#A49B8A;text-decoration:underline;text-underline-offset:3px;}
+.legal-footer-links a:hover{color:#F4D59A;}
+
+@media (max-width:820px){
+  .legal-layout{grid-template-columns:1fr;gap:18px;padding-bottom:72px;}
+  .legal-toc{position:static;display:flex;gap:8px;overflow:auto;padding:10px 12px;border-radius:14px;}
+  .legal-toc-title{display:none;}
+  .legal-toc a{white-space:nowrap;border:0;padding:7px 10px;background:rgba(255,255,255,.025);border-radius:999px;}
+}
+@media (max-width:640px){
+  .legal-nav-inner{min-height:64px;}
+  .legal-brand{font-size:20px;}
+  .legal-brand-mark{width:36px;height:36px;}
+  .legal-nav-actions>a:not(.legal-home){display:none;}
+  .legal-home{font-size:11px!important;padding:9px 12px!important;}
+  .legal-hero{padding:66px 0 28px;}
+  .legal-title{font-size:clamp(36px,11vw,50px);}
+  .legal-lead{font-size:14px;}
+  .legal-draft{font-size:11.5px;}
+  .legal-section{padding:24px 0;}
+  .legal-section h2{font-size:21px;}
+  .legal-section p,.legal-section li{font-size:13px;}
+}
+
+.legal-page{display:block !important;}
+</style>
+</head>
+<body>
+<section aria-labelledby="termsTitle" class="legal-page" id="termsPage">
+<nav class="legal-nav">
+<div class="container legal-nav-inner">
+<a class="legal-brand" data-legal-home="" href="index.html">
+<span class="legal-brand-mark">AM</span><span>Alpha <b>Moves</b></span>
+</a>
+<div class="legal-nav-actions">
+<a data-legal-link="privacy" href="polityka-prywatnosci.html">Polityka prywatności</a>
+<a class="legal-home" data-legal-home="" href="index.html">← Strona główna</a>
+</div>
+</div>
+</nav>
+<header class="legal-hero">
+<div class="container">
+<div class="legal-overline">Alpha Moves Academy · Dokumenty prawne</div>
+<h1 class="legal-title" id="termsTitle"><em>Regulamin</em> Serwisów</h1>
+<p class="legal-lead">Regulamin określa zasady korzystania z serwisów prowadzonych w domenach alphamoves.pl oraz alphanews.pl, składania zamówień i korzystania z oferowanych produktów oraz usług.</p>
+<div class="legal-draft"><strong>Zakres dokumentu.</strong> Regulamin obejmuje serwisy, sklepy, formularze sprzedażowe, treści cyfrowe i usługi oferowane przez Hubert Rzekieć Business Corporation w domenach alphamoves.pl oraz alphanews.pl.</div>
+</div>
+</header>
+<main class="container legal-layout">
+<aside aria-label="Spis treści" class="legal-toc">
+<div class="legal-toc-title">Na tej stronie</div>
+<a href="regulamin.html#reg-1">Definicje</a>
+<a href="regulamin.html#reg-2">Postanowienia ogólne</a>
+<a href="regulamin.html#reg-3">Usługi elektroniczne</a>
+<a href="regulamin.html#reg-4">Zamówienia</a>
+<a href="regulamin.html#reg-5">Płatności</a>
+<a href="regulamin.html#reg-6">Dostawa</a>
+<a href="regulamin.html#reg-7">Odstąpienie</a>
+<a href="regulamin.html#reg-8">Prawa autorskie</a>
+<a href="regulamin.html#reg-9">Reklamacje</a>
+<a href="regulamin.html#reg-10">Dane osobowe</a>
+<a href="regulamin.html#reg-11">Charakter edukacyjny</a>
+<a href="regulamin.html#reg-12">Postanowienia końcowe</a>
+</aside>
+<article class="legal-content">
+<section class="legal-section" id="reg-1">
+<h2>§ 1. Definicje</h2>
+<p>Na potrzeby niniejszego Regulaminu przyjmuje się następujące znaczenie pojęć:</p>
+<ul>
+<li><strong>Administrator danych</strong> — Hubert Rzekieć Business Corporation, ul. Kazimierza Jagiellończyka 13 lok. 19, 39-300 Mielec, NIP: 8652572005, będący jednocześnie Sprzedawcą.</li>
+<li><strong>Konsument</strong> — osoba fizyczna zawierająca ze Sprzedawcą umowę niezwiązaną bezpośrednio z jej działalnością gospodarczą lub zawodową, a także — w przypadkach przewidzianych prawem — osoba fizyczna zawierająca umowę bezpośrednio związaną z działalnością gospodarczą, gdy umowa nie ma dla niej charakteru zawodowego.</li>
+<li><strong>Konto</strong> — konto użytkownika utworzone w jednym z Serwisów lub w systemie wykorzystywanym przez Sprzedawcę, jeżeli dana usługa wymaga utworzenia Konta.</li>
+<li><strong>Kupujący</strong> — osoba fizyczna, osoba prawna lub jednostka organizacyjna dokonująca zakupu Produktu lub usługi oferowanej przez Sprzedawcę.</li>
+<li><strong>Platforma kursowa</strong> — platforma internetowa lub system informatyczny, za pośrednictwem którego Kupujący uzyskuje dostęp do zakupionych treści lub usług.</li>
+<li><strong>Produkt</strong> — treść cyfrowa, usługa cyfrowa lub inna usługa oferowana przez Sprzedawcę, w szczególności kurs online, szkolenie wideo, webinar, e-book, członkostwo, konsultacja lub inne materiały edukacyjne.</li>
+<li><strong>Regulamin</strong> — niniejszy regulamin.</li>
+<li><strong>Serwisy</strong> — strony, podstrony, formularze, sklepy, landing page'e oraz inne funkcjonalności prowadzone przez Sprzedawcę w domenach <strong>alphamoves.pl</strong> oraz <strong>alphanews.pl</strong>.</li>
+<li><strong>Sprzedawca</strong> — Hubert Rzekieć Business Corporation, ul. Kazimierza Jagiellończyka 13 lok. 19, 39-300 Mielec, NIP: 8652572005.</li>
+<li><strong>Treść cyfrowa</strong> — dane wytwarzane i dostarczane w postaci cyfrowej, w szczególności kursy online, nagrania, e-booki oraz inne materiały elektroniczne.</li>
+<li><strong>Zamówienie</strong> — oświadczenie woli Kupującego składane za pomocą formularza, checkoutu lub innego mechanizmu dostępnego w Serwisach, zmierzające do zawarcia umowy ze Sprzedawcą.</li>
+</ul>
+</section>
+<section class="legal-section" id="reg-2">
+<h2>§ 2. Postanowienia ogólne</h2>
+<p>Niniejszy Regulamin określa zasady korzystania z Serwisów prowadzonych w domenach <strong>alphamoves.pl</strong> i <strong>alphanews.pl</strong>, składania Zamówień, dokonywania płatności, dostarczania Produktów i usług oraz prawa i obowiązki Sprzedawcy i Kupujących.</p>
+<p>Sprzedawca może oferować za pośrednictwem Serwisów Produkty cyfrowe, usługi edukacyjne i inne świadczenia opisane każdorazowo na stronie danej oferty.</p>
+<p>Regulamin stanowi integralną część umowy zawieranej między Kupującym a Sprzedawcą, jeżeli jego akceptacja jest wymagana w procesie zakupu.</p>
+<p>Do korzystania z Serwisów oraz Produktów cyfrowych wymagane są urządzenie z dostępem do Internetu, aktualna przeglądarka internetowa oraz aktywny adres e-mail. Niektóre usługi mogą wymagać dodatkowego oprogramowania lub konta wskazanego w opisie oferty.</p>
+<p>Kupujący zobowiązany jest korzystać z Serwisów zgodnie z prawem, Regulaminem i dobrymi obyczajami. Zakazane jest dostarczanie treści bezprawnych oraz podejmowanie działań zakłócających działanie Serwisów.</p>
+</section>
+<section class="legal-section" id="reg-3">
+<h2>§ 3. Usługi świadczone drogą elektroniczną</h2>
+<p>Sprzedawca może świadczyć drogą elektroniczną w szczególności następujące usługi: umożliwienie przeglądania Serwisów, składania Zamówień, korzystania z formularzy, utworzenia Konta użytkownika, dostępu do materiałów edukacyjnych, platformy kursowej, społeczności lub innych funkcji opisanych w Serwisach.</p>
+<p>W celu zapewnienia bezpieczeństwa Sprzedawca stosuje odpowiednie środki techniczne i organizacyjne, w szczególności szyfrowanie transmisji danych przy użyciu protokołu SSL/TLS tam, gdzie ma zastosowanie.</p>
+<p>Korzystanie z usług elektronicznych wiąże się z typowymi ryzykami środowiska internetowego. Użytkownik powinien korzystać z aktualnego oprogramowania i odpowiednich zabezpieczeń swojego urządzenia.</p>
+</section>
+<section class="legal-section" id="reg-4">
+<h2>§ 4. Zamówienia</h2>
+<p>Zamówienia mogą być składane za pośrednictwem formularzy, checkoutów lub innych mechanizmów zakupowych dostępnych w Serwisach. Zakres wymaganych danych zależy od rodzaju Produktu lub usługi.</p>
+<p>W celu złożenia Zamówienia Kupujący wybiera Produkt, podaje wymagane dane, wybiera dostępną metodę płatności oraz zatwierdza Zamówienie przyciskiem wskazującym na obowiązek zapłaty lub innym równoważnym komunikatem wymaganym przepisami prawa.</p>
+<p>Złożenie Zamówienia stanowi ofertę zawarcia umowy. Umowa zostaje zawarta po przyjęciu Zamówienia przez Sprzedawcę i przekazaniu Kupującemu odpowiedniego potwierdzenia, chyba że z opisu konkretnej oferty wynika inny zgodny z prawem model zawarcia umowy.</p>
+<p>Sprzedawca może zmieniać ofertę, ceny i warunki promocji. Zmiany nie wpływają na Zamówienia skutecznie złożone przed ich wprowadzeniem.</p>
+</section>
+<section class="legal-section" id="reg-5">
+<h2>§ 5. Płatności</h2>
+<p>Ceny Produktów prezentowane w Serwisach są podawane w walucie wskazanej przy danej ofercie i zawierają podatki wymagane przepisami, jeżeli dotyczą danej transakcji.</p>
+<p>Dostępne metody płatności są wskazywane podczas składania Zamówienia i mogą obejmować szybkie przelewy internetowe, karty płatnicze, BLIK lub inne metody udostępniane przez operatora płatności.</p>
+<p>Obsługa płatności może być realizowana przez zewnętrznego operatora. Korzystanie z takiej metody może wymagać zaakceptowania warunków operatora płatności.</p>
+<p>Realizacja Zamówienia następuje po zaksięgowaniu płatności lub otrzymaniu potwierdzenia prawidłowej autoryzacji transakcji, chyba że warunki konkretnej oferty stanowią inaczej.</p>
+</section>
+<section class="legal-section" id="reg-6">
+<h2>§ 6. Dostawa Produktów cyfrowych i realizacja usług</h2>
+<p>Produkty cyfrowe są dostarczane drogą elektroniczną, np. poprzez wiadomość e-mail, link, plik do pobrania, Konto lub Platformę kursową. Usługi są realizowane w sposób i w terminie wskazanym w opisie konkretnej oferty.</p>
+<p>Po skutecznym opłaceniu Zamówienia Sprzedawca przekazuje Kupującemu informacje potrzebne do uzyskania dostępu do Produktu lub usługi, z uwzględnieniem terminu wskazanego na stronie oferty.</p>
+<p>Sprzedawca nie odpowiada za problemy z dostawą wynikające z podania przez Kupującego nieprawidłowych danych kontaktowych lub z przyczyn leżących po stronie systemów używanych przez Kupującego.</p>
+</section>
+<section class="legal-section" id="reg-7">
+<h2>§ 7. Odstąpienie od umowy i treści cyfrowe</h2>
+<p>Konsumentowi przysługują prawa wynikające z ustawy z dnia 30 maja 2014 r. o prawach konsumenta, w tym — co do zasady — prawo odstąpienia od umowy zawartej na odległość, z wyjątkami przewidzianymi ustawą.</p>
+<p>W przypadku treści cyfrowych niedostarczanych na nośniku materialnym prawo odstąpienia może wygasnąć po rozpoczęciu świadczenia, jeżeli spełnione zostały wszystkie warunki wymagane przez obowiązujące przepisy, w szczególności uzyskano uprzednią wyraźną zgodę Konsumenta na rozpoczęcie świadczenia przed upływem terminu do odstąpienia oraz potwierdzenie przyjęcia do wiadomości utraty prawa odstąpienia.</p>
+<p>Jeżeli Produkt lub usługa ma inny charakter, zasady odstąpienia są ustalane zgodnie z przepisami właściwymi dla tego rodzaju umowy oraz informacjami przekazanymi Kupującemu przed zakupem.</p>
+<p>Wady techniczne, brak dostępu lub niezgodność świadczenia mogą być zgłaszane w trybie reklamacyjnym.</p>
+</section>
+<section class="legal-section" id="reg-8">
+<h2>§ 8. Prawa własności intelektualnej</h2>
+<p>Treści i Produkty udostępniane w Serwisach, w tym teksty, grafiki, logotypy, materiały wideo, nagrania audio, opracowania i materiały szkoleniowe, mogą stanowić własność intelektualną Sprzedawcy lub podmiotów, które udzieliły mu odpowiednich praw lub licencji.</p>
+<p>Nabycie Produktu uprawnia Kupującego do korzystania z niego w zakresie wynikającym z umowy i jego przeznaczenia. Bez odrębnej zgody nie wolno w szczególności:</p>
+<ul>
+<li>kopiować lub rozpowszechniać Produktu w całości lub w części poza zakresem dozwolonym prawem,</li>
+<li>udostępniać dostępu osobom trzecim,</li>
+<li>odsprzedawać lub komercyjnie wykorzystywać materiałów,</li>
+<li>publicznie odtwarzać lub udostępniać materiałów bez odpowiedniej podstawy prawnej,</li>
+<li>usuwać oznaczeń praw autorskich lub technicznych zabezpieczeń.</li>
+</ul>
+</section>
+<section class="legal-section" id="reg-9">
+<h2>§ 9. Reklamacje</h2>
+<p>Sprzedawca zobowiązany jest dostarczyć Produkt lub usługę zgodne z zawartą umową i odpowiada za ich niezgodność na zasadach wynikających z obowiązujących przepisów.</p>
+<p>Reklamację można zgłosić elektronicznie na adres e-mail Sprzedawcy podany w Serwisach lub pisemnie na adres jego siedziby. Zgłoszenie powinno zawierać dane pozwalające zidentyfikować Kupującego i Zamówienie oraz opis problemu i żądanie Kupującego.</p>
+<p>Sprzedawca rozpatruje reklamację w terminie wynikającym z obowiązujących przepisów. Jeżeli dla danej kategorii reklamacji przepisy przewidują termin 14 dni, Sprzedawca stosuje ten termin.</p>
+<p>Konsument może skorzystać z dostępnych pozasądowych sposobów rozpatrywania reklamacji i dochodzenia roszczeń na zasadach wynikających z przepisów prawa.</p>
+</section>
+<section class="legal-section" id="reg-10">
+<h2>§ 10. Dane osobowe i pliki cookies</h2>
+<p>Administratorem danych osobowych Kupującego jest Sprzedawca. Zasady przetwarzania danych osobowych i wykorzystywania cookies w domenach <strong>alphamoves.pl</strong> oraz <strong>alphanews.pl</strong> opisuje odrębna <a data-legal-link="privacy" href="polityka-prywatnosci.html" style="color:#F4D59A;text-decoration:underline;text-underline-offset:3px;">Polityka Prywatności i Plików Cookies</a>.</p>
+</section>
+<section class="legal-section" id="reg-11">
+<h2>§ 11. Charakter edukacyjny materiałów</h2>
+<p>Materiały dotyczące tradingu, inwestowania, kryptowalut lub rynków finansowych dostępne w Serwisach mają charakter edukacyjny i informacyjny. Nie stanowią indywidualnej rekomendacji inwestycyjnej, porady finansowej ani gwarancji osiągnięcia określonego wyniku.</p>
+<p>Inwestowanie i trading wiążą się z ryzykiem utraty części lub całości kapitału. Decyzje inwestycyjne Kupujący podejmuje samodzielnie.</p>
+</section>
+<section class="legal-section" id="reg-12">
+<h2>§ 12. Postanowienia końcowe</h2>
+<p>Sprzedawca może zmienić Regulamin z ważnych przyczyn, w szczególności w przypadku zmiany przepisów prawa, metod płatności, funkcjonalności Serwisów lub zakresu oferowanych Produktów i usług.</p>
+<p>Do umów zawartych przed wejściem w życie nowej wersji Regulaminu stosuje się postanowienia obowiązujące w chwili zawarcia umowy, chyba że przepisy prawa stanowią inaczej.</p>
+<p>W sprawach nieuregulowanych Regulaminem zastosowanie mają właściwe przepisy prawa polskiego, w szczególności przepisy Kodeksu cywilnego, ustawy o prawach konsumenta, ustawy o świadczeniu usług drogą elektroniczną oraz przepisy dotyczące praw autorskich.</p>
+<p>Spory ze stroną niebędącą Konsumentem mogą być rozstrzygane przez sąd właściwy dla siedziby Sprzedawcy, jeżeli jest to dopuszczalne prawem. W sporach z Konsumentami właściwość sądu ustala się zgodnie z obowiązującymi przepisami.</p>
+<div class="legal-meta"><span>Dotyczy: alphamoves.pl oraz alphanews.pl</span><span>Sprzedawca: Hubert Rzekieć Business Corporation</span></div>
+</section>
+</article>
+</main>
+<footer class="legal-footer">
+<div class="container legal-footer-inner">
+<p>Inwestowanie i trading wiążą się z ryzykiem utraty kapitału. Materiały dostępne w alphamoves.pl i alphanews.pl mają charakter edukacyjny i informacyjny i nie stanowią indywidualnej rekomendacji inwestycyjnej ani porady finansowej.</p>
+<div class="legal-footer-links">
+<a data-legal-home="" href="index.html">Strona główna</a>
+<a data-legal-link="privacy" href="polityka-prywatnosci.html">Polityka prywatności</a>
+<a data-legal-link="terms" href="regulamin.html">Regulamin</a>
+</div>
+</div>
+</footer>
+</section>
+</body>
+</html>

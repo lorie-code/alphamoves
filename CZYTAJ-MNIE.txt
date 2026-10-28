@@ -1,0 +1,28 @@
+KOPIA STRONY www.alphamoves.pl (pobrana 28.10.2026)
+
+Otwórz index.html w przeglądarce, strona działa w całości offline.
+
+STRUKTURA
+  index.html                  strona główna (cały CSS i JS animacji jest w środku)
+  regulamin.html              regulamin
+  polityka-prywatnosci.html   polityka prywatności
+  assets/images/              11 zdjęć (.webp), wyciągniętych z HTML.
+                              Żeby podmienić zdjęcie, wrzuć nowe pod tą samą nazwą.
+  assets/js/                  GSAP 3.12.2 + ScrollTrigger (animacje przy scrollu)
+  assets/fonts/               fonty Geist, Instrument Serif, JetBrains Mono + fonts.css
+  _oryginal-1do1/             surowe pliki HTML 1:1 z serwera (zdjęcia w base64)
+
+GDZIE ZMIENIAĆ WYGLĄD
+  Kolory i fonty: index.html -> blok :root { --gold ... } na samej górze <style>
+  Motyw ciemny: klasa .theme-dark (tło, powierzchnie)
+
+LINKI ZEWNĘTRZNE (zostawione bez zmian)
+  https://easl.ink/ZB14j                      przyciski „Dołącz”
+  https://alphanews.pl/kurs-od-zera/#zapis    „Kurs od zera”
+
+
+DODANE W WERSJI PL/EN
+  - Domyślny język: polski. Przełącznik PL / EN jest w nawigacji oraz menu mobilnym; wybór jest zapamiętywany w localStorage.
+  - Przycisk WEEX prowadzi do https://www.weex.com/pl/register w wersji PL oraz https://www.weex.com/register w wersji EN.
+  - W sekcji kontaktu dodano dwa profile Instagram: Hubert Rzekieć i Marcin Bzduń.
+  - Tłumaczenia strony i podmiana adresu WEEX są obsługiwane przez assets/js/alphamoves-i18n.js.
