@@ -23,6 +23,7 @@ LINKI ZEWNĘTRZNE (zostawione bez zmian)
 
 DODANE W WERSJI PL/EN
   - Domyślny język: polski. Przełącznik PL / EN jest w nawigacji oraz menu mobilnym; wybór jest zapamiętywany w localStorage.
-  - Przycisk WEEX prowadzi do https://www.weex.com/pl/register w wersji PL oraz https://www.weex.com/register w wersji EN.
+  - Przycisk „WEEX x Alpha Moves partnership” prowadzi do https://www.weex.com/pl/register w wersji PL oraz https://www.weex.com/register w wersji EN.
   - W sekcji kontaktu dodano dwa profile Instagram: Hubert Rzekieć i Marcin Bzduń.
   - Tłumaczenia strony i podmiana adresu WEEX są obsługiwane przez assets/js/alphamoves-i18n.js.
+  - Polityka prywatności i Regulamin mają własny skrypt assets/js/alphamoves-legal-i18n.js, który pokazuje angielską wersję po wybraniu EN.

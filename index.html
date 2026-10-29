@@ -1366,9 +1366,86 @@ footer::before{content:'';position:absolute;top:0;left:50%;width:min(1180px,calc
 .instagram-link:hover{color:#F4D59A!important;}
 .instagram-link svg{width:16px;height:16px;flex:0 0 auto;}
 @media (max-width:1100px){.btn-weex{padding:12px 15px!important;}.lang-switch{padding:3px 5px;}}
+@media (max-width:1100px){.nav-inner{gap:14px;}.nav-links{gap:14px;}.nav-actions{gap:6px;}.nav-actions .btn-weex{font-size:10px;padding:11px 12px!important;}}
 @media (max-width:900px){.nav-actions .btn-weex{display:inline-flex;}.nav-actions .lang-switch{display:inline-flex;}.nav-actions .btn-weex{font-size:11px;min-height:42px;}}
 @media (max-width:700px){.nav-actions .btn-weex{padding:10px 12px!important;min-height:42px;}.nav-actions .lang-switch{display:none;}.mobile-weex-link{font-size:20px;}.instagram-links{margin-top:15px;}}
 @media (max-width:430px){.nav-actions .btn-weex{font-size:0;padding:10px 11px!important;}.nav-actions .btn-weex::before{content:'WEEX';font:600 10px var(--font-mono);letter-spacing:.08em;}}
+@media (min-width:1101px){.nav-links{gap:18px;}.nav-links a{white-space:nowrap;}}
+/* ============ MOBILE REFINEMENT — compact navigation and rhythm ============ */
+@media (max-width:700px){
+  .nav-inner{gap:8px;}
+  .nav-actions{gap:6px;}
+  .nav-actions .btn-weex{
+    display:inline-flex;
+    min-width:44px;
+    width:44px;
+    height:42px;
+    padding:10px 8px!important;
+    justify-content:center;
+    font-size:0!important;
+    letter-spacing:0;
+  }
+  .nav-actions .btn-weex::before{
+    content:'WEEX';
+    font:600 9px var(--font-mono);
+    letter-spacing:.08em;
+  }
+  .nav-actions .btn-gold{min-width:0;}
+  .hero{padding-top:136px;padding-bottom:68px;}
+  .hero-brand-seal{width:148px;margin-bottom:19px;}
+  .hero-title{font-size:clamp(37px,11.2vw,51px);line-height:1.015;}
+  .hero-sub{font-size:14px;line-height:1.55;margin-top:17px;}
+  .hero-ctas{margin-top:22px;gap:8px;}
+  .hero-ctas .btn{min-height:50px;}
+  .hero-confidence{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:18px;}
+  .hero-confidence>div{display:flex;min-width:0;padding:9px 5px;text-align:center;align-items:center;}
+  .hero-confidence strong{font-size:15px;}
+  .hero-confidence span{font-size:8.5px;line-height:1.25;}
+  .hero-team-kicker{margin-top:28px;margin-bottom:11px;font-size:8.5px;}
+  .hero-team{gap:6px;}
+  .portrait-caption{padding:27px 6px 8px;}
+  .portrait-caption .name{font-size:10px;}
+  .portrait-caption .role{font-size:6.5px;}
+  .section{padding:72px 0;}
+  .section-header{margin-bottom:30px;}
+  .section-desc{font-size:13.5px;line-height:1.55;}
+  .mobile-menu-panel{width:min(360px,88vw);padding:20px 18px calc(20px + env(safe-area-inset-bottom));}
+  .mobile-menu-head{padding-bottom:17px;}
+  .mobile-menu-label{font-size:21px;}
+  .mobile-menu-links{padding:17px 0;}
+  .mobile-menu-links a,.mobile-weex-link{min-height:51px;font-size:18px;}
+  .mobile-weex-link{font-size:14px!important;gap:8px;letter-spacing:-.015em;}
+  .mobile-weex-link>span:first-child{white-space:nowrap;}
+  .mobile-menu-cta{padding:18px;border-radius:18px;}
+  .mobile-menu-cta strong{font-size:27px;}
+  footer{padding-top:44px;padding-bottom:20px;}
+  .footer-top{gap:28px;padding-bottom:28px;margin-bottom:20px;}
+  .footer-cols{gap:24px 30px;}
+  .footer-brand p{font-size:12.5px;margin-top:10px;}
+  .footer-logo-image{width:118px;margin-bottom:10px;}
+}
+@media (max-width:900px){
+  .nav-actions .btn-weex{position:relative;display:inline-flex;width:44px;min-width:44px;height:42px;padding:0!important;align-items:center;justify-content:center;text-align:center;font-size:0!important;letter-spacing:0;}
+  .nav-actions .btn-weex::before{content:'WEEX';position:absolute;left:50%;top:50%;display:block;margin:0;transform:translate(-50%,-50%);font:600 9px/1 var(--font-mono);letter-spacing:.08em;white-space:nowrap;}
+  .mobile-menu-panel{overflow-y:auto;}
+  .mobile-menu-cta{margin-top:18px;}
+  .mobile-lang-slot{display:flex;justify-content:flex-end;align-items:center;padding:12px 0 0;}
+  .mobile-lang-slot .mobile-lang-switch{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px;width:max-content;margin:0;padding:6px 10px;border-radius:999px;}
+  .mobile-lang-slot .mobile-lang-switch button{padding:5px 9px;font-size:10px;line-height:1;}
+}
+@media (max-width:430px){
+  .nav{padding:9px 0;}
+  .brand-lockup img{width:35px;height:35px;}
+  .nav-actions .btn-gold{padding-inline:11px!important;font-size:11.5px;}
+  .hero{padding-top:130px;padding-bottom:60px;}
+  .hero-brand-seal{width:138px;}
+  .hero-title{font-size:37px;}
+  .hero-confidence strong{font-size:14px;}
+  .hero-confidence span{font-size:8px;}
+  .mobile-menu-panel{width:92vw;padding-left:16px;padding-right:16px;}
+  .footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px 18px;}
+  .footer-col a,.footer-col p{font-size:12px;}
+}
 </style>
 
 </head>
@@ -1387,7 +1464,7 @@ footer::before{content:'';position:absolute;top:0;left:50%;width:min(1180px,calc
 </ul>
 <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Otwórz menu" class="mobile-menu-toggle" id="mobileMenuToggle" type="button"><span></span><span></span></button><div class="nav-actions">
 <a class="btn btn-line" href="https://alphanews.pl/kurs-od-zera/#zapis" rel="noopener" style="padding:13px 22px;" target="_blank">Kurs od zera</a>
-<a class="btn btn-weex weex-nav-cta" data-weex-register href="https://www.weex.com/pl/register" rel="noopener" target="_blank"><span class="weex-label">WEEX · Zarejestruj się</span></a>
+<a class="btn btn-weex weex-nav-cta" data-weex-register href="https://www.weex.com/pl/register" rel="noopener" target="_blank"><span class="weex-label">WEEX x Alpha Moves partnership</span></a>
 <a class="btn btn-gold" href="https://easl.ink/ZB14j" rel="noopener" target="_blank"><span class="cta-full">Dołącz do Akademii</span><span class="cta-short">Dołącz</span></a>
 <div aria-label="Wybierz język" class="lang-switch" role="group"><button data-lang="pl" type="button">PL</button><span class="lang-divider">/</span><button data-lang="en" type="button">EN</button></div>
 </div>
@@ -1399,19 +1476,19 @@ footer::before{content:'';position:absolute;top:0;left:50%;width:min(1180px,calc
 <span class="mobile-menu-label">Alpha Moves Academy</span>
 <button aria-label="Zamknij menu" class="mobile-menu-close" data-menu-close="" type="button">×</button>
 </div>
+<div class="mobile-lang-slot"><div aria-label="Wybierz język" class="mobile-lang-switch" role="group"><button data-lang="pl" type="button">PL</button><span class="lang-divider">/</span><button data-lang="en" type="button">EN</button></div></div>
 <nav aria-label="Nawigacja mobilna" class="mobile-menu-links">
 <a href="index.html#dlaczego-my">Diagnoza <span>01</span></a>
 <a href="index.html#co-w-srodku">Co w środku <span>02</span></a>
 <a href="index.html#zespol">Zespół <span>03</span></a>
 <a href="index.html#oferta">Oferta <span>04</span></a>
 <a href="index.html#faq">FAQ <span>06</span></a>
-<a class="mobile-weex-link" data-weex-register href="https://www.weex.com/pl/register" rel="noopener" target="_blank"><span class="mobile-weex-label">WEEX · Zarejestruj się</span><span>WEEX</span></a>
+<a class="mobile-weex-link" data-weex-register href="https://www.weex.com/pl/register" rel="noopener" target="_blank"><span class="mobile-weex-label">WEEX x Alpha Moves partnership</span><span>WEEX</span></a>
 </nav>
 <div class="mobile-menu-cta">
 <div><span>Alpha Moves Academy</span><strong>249 USD / miesiąc</strong><small>Opcja płatności ratalnej w EasyCart</small></div>
 <a class="btn btn-gold" href="https://easl.ink/ZB14j" rel="noopener" target="_blank">Dołącz do Akademii</a>
 <a class="mobile-menu-course" href="https://alphanews.pl/kurs-od-zera/#zapis" rel="noopener" target="_blank">Najpierw kurs od zera →</a>
-<div aria-label="Wybierz język" class="mobile-lang-switch" role="group"><button data-lang="pl" type="button">PL</button><span class="lang-divider">/</span><button data-lang="en" type="button">EN</button></div>
 </div>
 </div>
 </div>

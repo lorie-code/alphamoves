@@ -1,8 +1,9 @@
 (function () {
   'use strict';
-  var lang = localStorage.getItem('alphamoves-lang') || 'pl';
+  var savedLang = localStorage.getItem('alphamoves-lang');
+  var lang = savedLang === 'en' || savedLang === 'pl' ? savedLang : 'pl';
   var weexUrl = { pl: 'https://www.weex.com/pl/register', en: 'https://www.weex.com/register' };
-  var weexLabel = { pl: 'WEEX · Zarejestruj się', en: 'WEEX · Register' };
+  var weexLabel = { pl: 'WEEX x Alpha Moves partnership', en: 'WEEX x Alpha Moves partnership' };
   var textMap = {
     'Alpha Moves Academy — Trading i inwestycje jako rzemiosło': 'Alpha Moves Academy — Trading and investing as a craft',
     'Alpha Moves Academy — członkostwo': 'Alpha Moves Academy — membership',
